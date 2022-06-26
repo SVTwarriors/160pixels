@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial;
+                background-color: black;
+            }
+            .imageRow {
+                display: -ms-flexbox; /* IE10 */
+                display: flex;
+                -ms-flex-wrap: wrap; /* IE10 */
+                flex-wrap: wrap;
+                padding: 0 4px;
+            }
+
+            .imageColumn {
+                -ms-flex: 20%; /* IE10 */
+                flex: 20%;
+                max-width: 20%;
+                padding: 0 4px;
+            }
+
+            .imageColumn img {
+                margin-top: 8px;
+                vertical-align: middle;
+                width: 100%;
+            }
+
+            .memeContHorizontal {
+            }
+
+            .memeContHorizontal {
+            }
+    
+            .memeContVertical {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            .memeContInner {
+            }
+        </style>
+    </head>
+    <body>
+        <div id="fullContentDiv">
+            <div id="columnsDiv">
+                <p id="outputPara">SCRIPT FAIL!</p>
+            </div>
+        </div>
+        <div id="memeContOuter" class="memeContOuter">
+            <div id="memeContHorizontal" class="memeContHorizontal">
+                <div id="memeContVertical" class="memeContVertical">
+                    <div id="memeContInner" class="memeContInner">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            columnNumber=5;
+            imageTheme="CELT";
+            imageNumber=95;
+            imageType=".bmp"
+            imageWidth=160;
+
+            function getImageWidth(IMGXXXX) {
+                imageWidth=document.getElementById(IMGXXXX).naturalWidth;
+            }
+            
+            function disappearAll() {
+
+            }
+
+            function setFontColor() {
+                var ddObject = document.getElementById('fontColor');
+                document.getElementById("outputText").style.color = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setBgColor() {
+                var ddObject = document.getElementById('bgColor');
+                document.getElementById("outputText").style.background = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setFontType() {
+                var ddObject = document.getElementById('fontType');
+                document.getElementById("outputText").style.fontFamily = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setFontSize() {
+                var ddObject = document.getElementById('fontSize');
+                document.getElementById("outputText").style.fontSize = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setTextAlign() {
+                var ddObject = document.getElementById('textAlign');
+                document.getElementById("outputText").style.textAlign = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setCellPadding() {
+                var ddObject = document.getElementById('cellPadding');
+                document.getElementById("outputText").style.padding = ddObject.options[ddObject.selectedIndex].value;
+            }
+
+            function setMemeText() {
+                var unprocessedText = " " + document.getElementById('textAreaInput').value + " ";
+                var keyWord = document.getElementById('textFieldKey').value;
+                var metaWord = document.getElementById('textFieldMeta').value;
+                var processedText = unprocessedText.replaceAll(" " + keyWord + " ", " *" + keyWord + "* ");
+                processedText = processedText.replaceAll(" " + keyWord + ",", " *" + keyWord + "*,");
+                processedText = processedText.replaceAll(" " + keyWord + ".", " *" + keyWord + "*.");
+                processedText = processedText.replaceAll(" " + keyWord + "!", " *" + keyWord + "*!");
+                processedText = processedText.replaceAll(" " + keyWord + "?", " *" + keyWord + "*?");
+                processedText = processedText.replaceAll(" " + keyWord + ":", " *" + keyWord + "*:");
+                processedText = processedText.trim();
+                processedText = " " + processedText + " "
+                processedText = processedText.replaceAll(" " + metaWord + " ", " <u>" + metaWord + "</u> ");
+                processedText = processedText.replaceAll(" " + metaWord + ",", " <u>" + metaWord + "</u>,");
+                processedText = processedText.replaceAll(" " + metaWord + ".", " <u>" + metaWord + "</u>.");
+                processedText = processedText.replaceAll(" " + metaWord + "!", " <u>" + metaWord + "</u>!");
+                processedText = processedText.replaceAll(" " + metaWord + "?", " <u>" + metaWord + "</u>?");
+                processedText = processedText.replaceAll(" " + metaWord + ":", " <u>" + metaWord + "</u>:");
+                processedText = processedText.trim();
+                document.getElementById("outputText").innerHTML = processedText;
+            }
+
+            function mozaicToMeme(selectedImage) {
+                document.getElementById("outputPara").innerHTML = "";
+                if(imageWidth==128){
+                    var memeOutput = "<table style='width:640px;'><tr><td style='border:0px solid black; height:160px; width:128px;'><img src='" + selectedImage + "'></td><td style='border:0px solid black; height:160px;'><p id='outputText' class='outputText' style='height:160px;'>output</p></td>";
+                }
+                if(imageWidth==160){
+                    var memeOutput = "<table style='width:640px;'><tr><td style='border:0px solid black; height:160px; width:160px;'><img src='" + selectedImage + "'></td><td style='border:0px solid black; height:160px;'><p id='outputText' class='outputText' style='height:160px;'>output</p></td>";
+                }
+                if(imageWidth==320){
+                    var memeOutput = "<table style='width:480px;'><tr><td style='border:0px solid black; height:160px; width:160px;'></td><td style='background-image:url(" + selectedImage + "); background-repeat:no-repeat; background-size: 320px 160px; width:320px; height:160px;'><p id='outputText' class='outputText' style='height:160px;'>output</p></td>";
+                }
+                var inputTextfield = "<td colspan='2'><textarea onchange='setMemeText()' rows=4 id='textAreaInput' style='background-color: lightgray; width:100%;'>Text</textarea></td>";
+                var inputKey = "<td><input onchange='setMemeText()' id='textFieldKey' style='background-color: lightgray; width:100%;' value='Keys'></input></td>";
+                var inputMeta = "<td><input onchange='setMemeText()' id='textFieldMeta' style='background-color: lightgray; width:100%;' value='Meta'></input></td>";
+                var dropDownTextAlign = "<td><select onchange='setTextAlign()' id='textAlign' style='width:100%'><option value='left'>Left Align</option><option value='center'>Center</option><option value='justify'>Justify</option><option value='right'>Right Align</option></select></td>";
+                var dropDownCellPadding = "<td><select onchange='setCellPadding()' id='cellPadding' style='width:100%'><option value='0px'>0px Padding</option><option value='3px'>3px Padding</option><option value='6px'>6px Padding</option><option value='9px'>9px Padding</option><option value='12px'>12px Padding</option><option value='15px'>15px Padding</option></select></td>";
+                var dropDownFontType = "<td><select onchange='setFontType()' id='fontType' style='width:100%'><option value='Arial'>Arial</option><option value='Impact'>Impact</option></select></td>";
+                var dropDownFontSize = "<td><select onchange='setFontSize()' id='fontSize' style='width:100%'><option value='8px'>Font 8</option><option value='10px'>Font 10</option><option value='12px'>Font 12</option><option value='16px'>Font 16</option><option value='24px'>Font 24</option><option value='32px'>Font 32</option><option value='64px'>Font 64</option><option value='128px'>Font 128</option></select></td>";
+                var dropDownBgColor = "<td><select onchange='setBgColor()' id='bgColor' style='width:100%'><option style=çolor:black; background-color: transparent;' value='transparent'>Bg trasnp</option><option style='color:black; background-color: white;' value='white'>Bg white</option><option style='color:black; background-color: cornsilk;' value='cornsilk'>Bg cornsilk</option><option style='color:black; background-color: khaki;' value='khaki'>Bg khaki</option><option style='color:white; background-color: black;' value='black'>Bg black</option></select></td>";
+                var dropDownFontColor = "<td><select onchange='setFontColor()' id='fontColor' style='width:100%'><option style='color:black; background-color: white;' value='white'>Font white</option><option style='color:black; background-color: cornsilk;' value='cornsilk'>Font cornsilk</option><option style='color:black; background-color: khaki;' value='khaki'>Font khaki</option><option style='color:black; background-color: yellow;' value='yellow'>Font yellow</option><option style='color:black; background-color: gold;' value='gold'> Font gold</option><option style='color:black; background-color: olive;' value='olive'>Font olive</option><option style='color:black; background-color: greenyellow;' value='greenyellow'>Font greenyellow</option><option style='color:black; background-color: aqua;' value='aqua'>Font aqua</option><option style='color:black; background-color: turquoise;' value='turquoise'>Font turquoise</option><option style='color:black; background-color: pink;' value='pink'>Font pink</option><option style='color:black; background-color: hotpink;' value='hotpink'>Font hotpink</option><option style='color:black; background-color: deeppink;' value='deeppink'>Font deeppink</option><option style='color:white; background-color: black;' value='black'>Font black</option></select></td>";
+                var buttonCopyDiv = "<td colspan='2'> <button type='button' onclick = 'disappearAll()' id='buttonElem' style='width:100%'>Copy Warrior Meme</button></td>";
+                document.getElementById("memeContInner").innerHTML =
+                    memeOutput + "</tr><tr>" +
+                    inputTextfield + "</tr><tr>" + 
+                    inputKey + inputMeta + "</tr><tr>" +
+                    dropDownTextAlign + dropDownCellPadding + "</tr><tr>" +
+                    dropDownFontType + dropDownFontSize + "</tr><tr>" +
+                    dropDownBgColor + dropDownFontColor + "</tr><tr>" + 
+                    buttonCopyDiv + "</tr></table>";
+            }
+
+            function shuffle(a) {
+                var j, x, i;
+                for (i = a.length - 1; i > 0; i--) {
+                    j = Math.floor(Math.random() * (i + 1));
+                    x = a[i];
+                    a[i] = a[j];
+                    a[j] = x;
+                }
+                return a;
+            }
+
+            function populateColumns(imageNumber, columnNumber, imageTheme){
+                var allImagesArray = [];
+                var allColumnArray = [];
+                var scrambledNumbersArray = [];
+                var shuffleOnce=true;
+                for (var j = 0; j < imageNumber; j++) {
+                    scrambledNumbersArray[j] = String(j+1);
+                    }
+                for (var j = 0; j < imageNumber; j++) {
+                    if(shuffleOnce==true){
+                        scrambledNumbersArray = shuffle(shuffle(scrambledNumbersArray));
+                        shuffleOnce=false;
+                    }
+                    while(scrambledNumbersArray[j].length<4) {
+                        scrambledNumbersArray[j] = "0" + scrambledNumbersArray[j];
+                    }
+                    for (var k = 0; k < columnNumber; k++) {
+                        if(j%(Math.floor(imageNumber/columnNumber))==0 && j!=0) { allImagesArray[j] = "</div><div class='imageColumn'>" + "<img id='IMG" + scrambledNumbersArray[j] + "' " +"src='" + imageTheme + "/" + imageTheme + scrambledNumbersArray[j] + imageType + "' style='width:>100%'" + "onclick=getImageWidth('IMG"+ scrambledNumbersArray[j] + "');mozaicToMeme('" + imageTheme + "/" + imageTheme + scrambledNumbersArray[j] + imageType + "')" +">"; }
+                        else { allImagesArray[j] = "<img id='IMG" + scrambledNumbersArray[j] + "' " +"src='" + imageTheme + "/" + imageTheme + scrambledNumbersArray[j] + imageType + "' style='width:>100%'" + "onclick=getImageWidth('IMG"+ scrambledNumbersArray[j] + "');mozaicToMeme('" + imageTheme + "/" + imageTheme + scrambledNumbersArray[j] + imageType + "')" +">"; }
+                        }
+                        allImagesArray=allImagesArray.slice(0, columnNumber*Math.floor(imageNumber/columnNumber));
+                    }
+                allImagesArray.unshift("<div class='imageColumn'>");
+                allImagesArray.push("</div>");
+                allImagesArray.unshift("<div class='imageRow'>");
+                allImagesArray.push("</div>");
+                document.getElementById("outputPara").innerHTML = allImagesArray.join("");
+            }
+            populateColumns(imageNumber, columnNumber, imageTheme, imageType);
+        </script>
+    </body>
+</html>
