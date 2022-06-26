@@ -1,0 +1,190 @@
+<html>
+	<head>
+
+ <head>
+		<meta charset="UTF-8">
+		<meta name="description" id="metaDescript" content="A little website to fetch today's stock news!">
+		<meta name="keywords" id="metaKeys" content="stock market, breaking news, shares">
+
+		<style>
+			body{
+				background-color: black;
+				color: white;
+			}
+			table.titleTable{
+				width:60%;
+				margin-left:auto;
+				margin-right:auto;
+				text-align: center;
+			}
+			td.dollarSignCell{
+				width:15%;
+			}
+			p.titlePara{
+				font-family: Impact;
+				font-size:50px;
+				text-align: center;
+				color: white;
+			}
+			img.dollarSignStyle{
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+			table.dateTable{
+				width:60%;
+				margin-left:auto;
+				margin-right:auto;
+				text-align: center;
+			}
+			p.datePara{
+				font-family: Impact;
+				font-size:30px;
+				text-align: center;
+				color: white;
+			}
+			table.outputTable{
+				font-size: 24px;
+				width:60%;
+				margin-left:auto;
+				margin-right:auto;
+				text-align: center;
+			}
+			td.outputCell{
+				text-align: center;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<table class="titleTable">
+			<tr>
+				<td class="dollarSignCell">
+					<img id="dollarSignImageLeft" class="dollarSignStyle"></img>
+				</td>
+				<td>
+					<p id="titlePara" class="titlePara">Portfolio News</p>
+				</td>
+				<td class="dollarSignCell">
+					<img id="dollarSignImageRight" class="dollarSignStyle"></img>
+				</td>
+			</tr>
+		</table>
+	
+	<hr>	
+	
+		<table class="dateTable">
+			<tr>
+				<td class="dateCell">
+					<p id="datePara" class="datePara"></p>
+				</td>
+			</tr>
+		</table>
+	
+	<hr>
+	
+		<table id="outputTable" class="outputTable">
+			<tr>
+				<td id="outputCell" class="outputCell">
+					Loading...
+				</td>
+			</tr>
+		</table>
+		
+		<script>
+				
+			var dollarSignRandomizer = Math.floor(Math.random() * 4) + 1;
+			var dollarSignSource = "StockNews/StockNewsDollarSign" + dollarSignRandomizer + ".png"
+			document.getElementById('dollarSignImageLeft').src = dollarSignSource;
+			document.getElementById('dollarSignImageRight').src = dollarSignSource;
+			var today = new Date();
+			var dateDay = today.getDate();
+			if(dateDay<10){dateDay = "0" + dateDay};
+			var dateMonth = today.getMonth()+1;
+			if(dateMonth<10){dateMonth = "0" + dateMonth};
+			var dateYear = today.getFullYear();
+			document.getElementById("datePara").innerHTML = dateDay + "-" + dateMonth + "-" + dateYear;
+			
+			var urlSymbolArray = ["ENGI.PA", "ORA.PA", "VPK.AS", "RDSA.AS", "GOLD", "AUY", "K.TO", "POLY.L"];
+			var urlSymbol;
+			var urlToken = "&token=brjjcr7rh5r9g3ot58eg";
+			
+			var urlSiteNews = "https://finnhub.io/api/v1/company-news?symbol=";
+			var urlDateNews = "&from=" + dateYear + "-" + dateMonth + "-" + dateDay + "&to=" + dateYear + "-" + dateMonth + "-" + dateDay;
+			var urlToken = "&token=brjjcr7rh5r9g3ot58eg";
+			
+			var urlSiteProfile = "https://finnhub.io/api/v1/stock/profile2?symbol=";
+			
+			var urlFullNews;
+			var urlFullProfile;
+			
+			function length(obj) {return Object.keys(obj).length;}
+			
+			async function scanAvailableNews(){
+			document.getElementById('outputCell').innerHTML = "";
+			for(var i = 0; i < urlSymbolArray.length; i++)
+				{
+				urlSymbol = urlSymbolArray[i];
+				urlFullNews = urlSiteNews + urlSymbol + urlDateNews + urlToken;
+				urlFullProfile = urlSiteProfile + urlSymbol + urlToken;
+				
+				const responseProfile = await fetch(urlFullProfile);
+				var jsonDataProfile = await responseProfile.json();
+				var responseName = jsonDataProfile.name;
+				
+				const responseNews = await fetch(urlFullNews);
+				var jsonDataNews = await responseNews.json();
+				var responseCount = length(jsonDataNews);
+				if(responseCount>0)
+					{
+						document.getElementById('outputCell').innerHTML = document.getElementById('outputCell').innerHTML +
+						"<p id='" + urlSymbol + "' onclick=newsFeedTicker('" + urlSymbol + "')>" + responseName + " <b>(" + responseCount + ")</b>" + "</p>";
+					}
+				}
+			}
+			
+			async function newsFeedTicker(Ticker){
+				var randomNumber;
+				var colorArray = ["#009999","#00CCCC","#66CCCC","#00FFFF","#99FFFF","#009999","#00CCCC","#66CCCC","#00FFFF","#99FFFF","#009999","#00CCCC","#66CCCC","#00FFFF","#99FFFF","#009999","#00CCCC","#66CCCC","#00FFFF"];
+				document.getElementById("outputCell").style.textAlign = "left";
+				var Ticker;
+				urlFullNews = urlSiteNews + Ticker + urlDateNews + urlToken;
+				urlFullProfile = urlSiteProfile + Ticker + urlToken;
+				
+				document.getElementById('outputCell').innerHTML = "";
+				
+				const responseNewsProfile = await fetch(urlFullProfile);
+				var jsonDataNewsProfile = await responseNewsProfile.json();
+				var companyName = jsonDataNewsProfile.name;
+				
+				const responseNewsFeed = await fetch(urlFullNews);
+				var jsonDataNewsFeed = await responseNewsFeed.json();
+				var responseFeedCount = length(jsonDataNewsFeed);
+				
+				var jsonDataNewsFeedHeadline;
+				var jsonDataNewsFeedSummary;
+				var jsonDataNewsFeedUrl;
+								
+				document.getElementById('outputCell').innerHTML = "<u><span style='color:white; font-family: impact; font-size:38px; textAlign=center'>" + companyName + " (" + Ticker + ")</span></u><hr>";
+				
+				for(var i=0; i<Math.min(10,responseFeedCount); i++){
+				
+					randomNumber = Math.floor(Math.random()*19)+1;
+					
+					jsonDataNewsFeedHeadline = jsonDataNewsFeed[i].headline;
+					jsonDataNewsFeedSummary = jsonDataNewsFeed[i].summary;
+					jsonDataNewsFeedUrl = jsonDataNewsFeed[i].url;
+					
+					document.getElementById('outputCell').innerHTML = document.getElementById('outputCell').innerHTML +
+					"<a href =" + jsonDataNewsFeedUrl + "><img src=StockNews/StockNewsLink" + randomNumber + ".png style='float:left; width:40px; height:40px; border:5px solid #000000;'></a>" +
+					"<span style='color:" + colorArray[randomNumber] + "; font-size:20px; text-decoration:underline'>" + jsonDataNewsFeedHeadline + "</span><br>" + 
+					"<span style='color:white; font-size:18px'>" + jsonDataNewsFeedSummary + "</span><hr>";
+				}
+			}
+			
+			scanAvailableNews();
+		
+		</script>
+	
+	</body>	
+</html>

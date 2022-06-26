@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" id="metaDescript" content="A small website in case you want to donate a USD. I dont really care about the money... I just like to encourage Monero transactions.">
+  <meta name="keywords" id="metaKeys" content="Monero QR, Monero Wallet, Donation", "crypto">
+
+<style>
+body {
+  background-color: #ff6600;
+} 
+.container {
+  display: grid;
+  background-color: #FFFFFF;
+  padding: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 15px solid #4c4c4c;
+  border-radius: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+    function copyEvent(id)
+    {
+        var str = document.getElementById(id);
+        window.getSelection().selectAllChildren(str);
+        document.execCommand("Copy")
+    }
+getText("https://api.cryptonator.com/api/ticker/xmr-eur");
+    async function getText(file) {
+        let myObject = await fetch(file);
+        let myText = await myObject.text();
+        let JSONObj = JSON.parse(myText); 
+        document.getElementById("XMRtoEUR").innerHTML = Number(JSONObj.ticker.price).toFixed(2) + " " + JSONObj.ticker.target + "/" + JSONObj.ticker.base;
+}
+
+</script>
+
+<div class="container">
+<div>	
+	<h2>
+		Donate!?
+	</h2>
+</div>
+<div>
+	<h1 id="XMRtoEUR">Could not fetch XMR price!</h1>
+	<p><span id="walletString">42dS4bqXmGcCHytfkFBR154otYF8iKqmPLEv4MSpaVueWrSXFDY73sY6cizrEkTANx5pTEiv9gT8Mc5kBFVuTAusStkHC9b</span>&nbsp;&nbsp;&nbsp;<button type="button" onclick="copyEvent('walletString')">Copy Wallet</button></p>
+</div>
+<div>
+	<img src=moneroLogo.png><img src=moneroQR.png><img src=moneroLogo.png>
+</div>
+<div>	
+	<h2>
+		Thanks!
+	</h2>
+</div>
+<div>
+	<a href="index.html">
+		<img src=moneroHome.png width=60 heigth=60>
+	</a>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+<style>
+body {
+	background-image: url("pubChem/FLASK.jpg");
+}
+</style>
+</head>
+  
+<body>
+    <script>
+        function casToProp() {
+            casString = document.getElementById("casInput").value;
+            console.log(casString);
+            casArray = casString.split(',');
+            console.log(casArray);
+            propString = ""
+            propArray = []
+            for (let i = 0; i < casArray.length; i++) {
+                let websitePrefix = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/";
+                let variableCAS = casArray[i];
+                //Choose property (e.g. MolecularWeight, MolecularFormula, IsomericSMILES, IUPACName, XLogP)
+                let propertyTypeSelect = document.getElementById("propTypeDropdown").value;
+                let URLfiller = "/property/"
+                let websiteSuffix = "/JSON";
+                let websiteFull =  websitePrefix + variableCAS + URLfiller + propertyTypeSelect + websiteSuffix;
+                let outputString = "";
+                console.log(websiteFull);
+                let fetchRes = fetch(websiteFull);
+                    fetchRes.then(res =>
+                    res.json()).then(d => {
+                    propString = variableCAS + "/" + d["PropertyTable"]["Properties"][0][propertyTypeSelect];
+                    console.log(propString)
+                    propArray.push(propString);
+                    console.log(propArray);
+                    outputString = propArray.join(",");
+                    document.getElementById("propOutput").innerHTML = outputString;
+                    document.getElementById("percOut").innerHTML = i+1 + "/" + casArray.length + " (" + 100*(i+1)/casArray.length + "%)";
+                    sleep(350);
+                }).catch((error) => { 
+                    propArray.push(variableCAS + "/Not Found!");
+                    outputString = propArray.join(",");
+                    sleep(350);
+                    document.getElementById("propOutput").innerHTML = outputString;
+                    document.getElementById("percOut").innerHTML = i+1 + "/" + casArray.length + " (" + 100*(i+1)/casArray.length + "%)";
+                });
+            }
+        }
+
+        function copyPropToClipboard(){
+            navigator.clipboard.writeText(document.getElementById("propOutput").innerHTML);
+        }
+        function sleep(milliseconds) {
+            var start = new Date().getTime();
+            for (var i = 0; i < 1e7; i++) {
+                if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+    </script>
+<h1>Fetching some Pubchem data</h1>
+<p>Input the NUM CAS here with "," as separator:</p>
+<textarea id="casInput" rows="20" cols="100">52315-07-8,72963-72-5,1226892-43-8,15696-43-2,616-23-9,68797-57-9,25068-38-6,112-24-3,989-38-8,61791-25-1,1417539-38-8,101-68-8,12237-27-3,12237-22-8,9049-71-2,50-00-0</textarea>
+<hr>
+
+<select id="propTypeDropdown">
+        <option value="MolecularFormula">MolecularFormula</option>
+        <option value="IsomericSMILES">IsomericSMILES</option>
+        <option value="CanonicalSMILES">CanonicalSMILES</option>  
+        <option value="MolecularWeight">MolecularWeight</option>  
+</select> 
+
+<button onclick="casToProp()">Click for CAS to Prop</button>
+<hr>
+<p>Chosen property should output here with "," as separator:</p>
+<p id="propOutput">OUTPUT WILL PRINT HERE</p>
+<p>Percentage complete:</p>
+<p id="percOut">you haven't started yet</p>
+<hr>
+<button onclick="copyPropToClipboard()">Click to Copy Prop to Clipboard</button>
+</body>
+  
+</html>

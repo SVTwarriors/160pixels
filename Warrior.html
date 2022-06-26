@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+            }
+            .otherDiv {
+                visibility: collapse;
+            }
+            .selectedDiv {
+                visibility: visible;            
+            }
+            .gridGlobal{
+                margin: auto;
+            }
+            .gridCont {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                gap: 10px;
+                padding: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+            img {
+                width: auto;
+            }  
+            .gridSub {
+            }
+            .leftArrowDiv {
+            }
+            .rightArrowDiv {
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contentDiv" class="contentDiv">XXX</div>
+        <script>
+            var catz = ["ROME","CELT","GRZZ","WWOZ","CONZ","DRDD"];
+            var selectedNum = 0;
+            function populateDiv(){
+                var contentString = "";
+                for(var i=0; i<catz.length; i++){
+                    if(i==selectedNum){
+                        contentString = contentString + "<div class='selectedDiv'>";
+                        contentString = contentString + "<a href='Warrior/" + catz[i] + ".html'>";
+                        contentString = contentString + "<img src='Warrior/" + catz[i] + "/" + catz[i] + ".bmp'" + "></a></div>";
+                        }
+                    else{
+                        contentString = contentString;
+                        }
+                    }
+                contentString = "<div class='gridGlobal'><div class='gridCont'><div class='leftArrowDiv'><img src='Warrior/WarriorLEFT.bmp' onclick='selectedNumChange(-1);populateDiv();'></div>" + "<div class='gridSub'>" + contentString + "</div>" + "<div class='gridSub'><img src='Warrior/WarriorRIGHT.bmp' onclick='selectedNumChange(+1);populateDiv();'></div></div></div>";
+                document.getElementById("contentDiv").innerHTML = contentString;
+                }
+            function selectedNumChange(change){
+                selectedNum = selectedNum + change;
+                if(selectedNum<0){
+                    selectedNum=0;
+                    }
+                if(selectedNum>=catz.length){
+                    selectedNum=-1+catz.length; 
+                    }
+                }
+            populateDiv();
+        </script>
+    </body>
+</html>

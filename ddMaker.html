@@ -1,0 +1,605 @@
+
+<html>
+<header>
+<style>
+    body{
+        width: 80%;
+        margin: auto;
+        background-color: black;
+        color: white;
+    }
+
+    div.pageMainStructDiv{
+        margin: 50px;
+        display: grid;
+    }
+    
+    div.title{
+        background-color: orange;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 3em;
+    }
+    div.mainMenuStyle{
+        display: grid;
+        padding: 2%;
+        background-color: darkgray;
+        grid-template-columns: auto 70%;
+        font-size: large;
+    }
+    label.genVarLabel{
+        text-align: right;
+    }
+    select.genVar{
+        width: 70%;
+    }    
+    div.gridContainer{
+        padding: 2%;
+        background-color: gray;
+        grid-template-columns: auto;
+    }
+    div.menuStyle{
+        display: grid;
+        font-size: large;
+        grid-template-columns: auto 70%;
+    }
+    div.menuStyleNoDisplay{
+        font-size: large;
+        display: none;
+        grid-template-columns: auto 70%;
+    }
+    div.outputStyle{
+        display: grid;
+        padding: 2%;
+        grid-template-columns: 20% 70% 5% 5%;
+        background-color: gold;
+        color: black;
+        font-size: large;
+    }                                    
+</style>
+</header>
+
+<body>
+<div class="pageMainStructDiv">
+<div class="title">JUST CLEANER THIS WAY!</div>
+<div id="genVarDiv" class="mainMenuStyle">
+    <label for="genVar" id="genVarLabel">Gen Variant:</label>
+    <select id="genVar"
+        onclick=
+            "
+                /*hideMenus();hideMenus();hideMenus();hideMenus();hideMenus();hideMenus();*/
+                makeMenu.apply(ZREF_OCC_OCCREASON_INFO, ZREF_OCC_OCCREASON);
+                makeMenu.apply(ZREF_OCC_OCCCOUNTRY_INFO, ZREF_OCC_OCCCOUNTRY);
+
+                makeMenu.apply(ZREF_PHYSC_DOCYEAR_INFO, ZREF_PHYSCTOX_DOCYEAR);
+                makeMenu.apply(ZREF_PHYSC_DOCTYPE_INFO, ZREF_PHYSCTOX_DOCTYPE);
+                makeMenu.apply(ZREF_PHYSC_PHYSCGROUPS_INFO, ZREF_PHYSC_PHYSCGROUPS);
+                makeMenu.apply(ZREF_PHYSC_PHYSCVATS_INFO, ZREF_PHYSC_PHYSCVATS);
+                makeMenu.apply(ZREF_PHYSC_PHYSCPROTOCOLS_INFO, ZREF_PHYSC_PHYSCPROTOCOLS);             
+
+                makeMenu.apply(ZREF_TOX_DOCYEAR_INFO, ZREF_PHYSCTOX_DOCYEAR);
+                makeMenu.apply(ZREF_TOX_DOCTYPE_INFO, ZREF_PHYSCTOX_DOCTYPE);
+                makeMenu.apply(ZREF_TOX_TOXGROUPS_INFO, ZREF_TOX_TOXGROUPS);
+                makeMenu.apply(ZREF_TOX_TOXVATS_INFO, ZREF_TOX_TOXVATS);
+                makeMenu.apply(ZREF_TOX_TOXPROTOCOLS_INFO, ZREF_TOX_TOXPROTOCOLS);
+
+                makeMenu.apply(ZREF_REG_DOCYEAR_INFO, ZREF_REG_DOCYEAR);
+                makeMenu.apply(ZREF_REG_CONTINENT_INFO, ZREF_REG_CONTINENT);
+
+                makeMenu.apply(ZSUP_SDSAM_AMCOUNTRIES_INFO, ZSUP_SDSAM_AMCOUNTRIES);
+                makeMenu.apply(ZSUP_SDSAP_APCOUNTRIES_INFO, ZSUP_SDSAP_APCOUNTRIES);
+                makeMenu.apply(ZSUP_SDSEU_EUCOUNTRIES_INFO, ZSUP_SDSEU_EUCOUNTRIES);
+                makeMenu.apply(ZSUP_SDSAM_SDSLANG_INFO, ZSUP_SDSALL_SDSLANG);
+                makeMenu.apply(ZSUP_SDSAP_SDSLANG_INFO, ZSUP_SDSALL_SDSLANG);
+                makeMenu.apply(ZSUP_SDSEU_SDSLANG_INFO, ZSUP_SDSALL_SDSLANG);
+                makeMenu.apply(ZSUP_SDSAM_SDSTYPE_INFO, ZSUP_SDSALL_SDSTYPE);
+                makeMenu.apply(ZSUP_SDSAP_SDSTYPE_INFO, ZSUP_SDSALL_SDSTYPE);
+                makeMenu.apply(ZSUP_SDSEU_SDSTYPE_INFO, ZSUP_SDSALL_SDSTYPE);
+                makeMenu.apply(ZSUP_SDSAM_SDSMAJORCHANGE_INFO, ZSUP_SDSALL_SDSMAJORCHANGE);
+                makeMenu.apply(ZSUP_SDSAP_SDSMAJORCHANGE_INFO, ZSUP_SDSALL_SDSMAJORCHANGE);
+                makeMenu.apply(ZSUP_SDSEU_SDSMAJORCHANGE_INFO, ZSUP_SDSALL_SDSMAJORCHANGE);
+                makeMenu.apply(ZSUP_SDSAM_SDSMINORCHANGE_INFO, ZSUP_SDSALL_SDSMINORCHANGE);
+                makeMenu.apply(ZSUP_SDSAP_SDSMINORCHANGE_INFO, ZSUP_SDSALL_SDSMINORCHANGE);
+                makeMenu.apply(ZSUP_SDSEU_SDSMINORCHANGE_INFO, ZSUP_SDSALL_SDSMINORCHANGE);
+                makeMenu.apply(ZSUP_SDSAM_SDSREVYEAR_INFO, ZSUP_SDSALL_SDSREVYEAR);
+                makeMenu.apply(ZSUP_SDSAP_SDSREVYEAR_INFO, ZSUP_SDSALL_SDSREVYEAR);
+                makeMenu.apply(ZSUP_SDSEU_SDSREVYEAR_INFO, ZSUP_SDSALL_SDSREVYEAR);
+                makeMenu.apply(ZSUP_SDSAM_SDSREVMONTH_INFO, ZSUP_SDSALL_SDSREVMONTH);
+                makeMenu.apply(ZSUP_SDSAP_SDSREVMONTH_INFO, ZSUP_SDSALL_SDSREVMONTH);
+                makeMenu.apply(ZSUP_SDSEU_SDSREVMONTH_INFO, ZSUP_SDSALL_SDSREVMONTH);
+                makeMenu.apply(ZSUP_SDSAM_SDSREVDAY_INFO, ZSUP_SDSALL_SDSREVDAY);
+                makeMenu.apply(ZSUP_SDSAP_SDSREVDAY_INFO, ZSUP_SDSALL_SDSREVDAY);
+                makeMenu.apply(ZSUP_SDSEU_SDSREVDAY_INFO, ZSUP_SDSALL_SDSREVDAY);
+                makeMenu.apply(ZSUP_SDSAM_SDSSUPPLIER_INFO, ZSUP_SDSALL_SDSSUPPLIER);
+                makeMenu.apply(ZSUP_SDSAP_SDSSUPPLIER_INFO, ZSUP_SDSALL_SDSSUPPLIER);
+                makeMenu.apply(ZSUP_SDSEU_SDSSUPPLIER_INFO, ZSUP_SDSALL_SDSSUPPLIER);
+                
+                makeMenu.apply(ZSUP_QST_SDSREVYEAR_INFO, ZSUP_SDSALL_SDSREVYEAR);
+                makeMenu.apply(ZSUP_QST_SDSREVMONTH_INFO, ZSUP_SDSALL_SDSREVMONTH);
+                makeMenu.apply(ZSUP_QST_SDSREVDAY_INFO, ZSUP_SDSALL_SDSREVDAY);
+                makeMenu.apply(ZSUP_QST_SDSSUPPLIER_INFO, ZSUP_SDSALL_SDSSUPPLIER);
+
+                makeMenu.apply(ZREF_BPDS_NPINEW_INFO, ZREF_BPDS_NPINEW);
+                makeMenu.apply(ZREF_BPDS_NPIYEAR_INFO, ZREF_BPDS_NPIYEAR);
+                makeMenu.apply(ZREF_BPDS_NPIMONTH_INFO, ZREF_BPDS_NPIMONTH);
+                makeMenu.apply(ZREF_BPDS_NPIDAY_INFO, ZREF_BPDS_NPIDAY);
+                makeMenu.apply(ZREF_BPDS_NPIREQUESTOR_INFO, ZREF_BPDS_NPIREQUESTOR);
+
+                makeMenu.apply(ZREF_ENDU_APPLAREA_INFO, ZREF_ENDU_APPLAREA);
+                makeMenu.apply(ZREF_ENDU_CONTINENT_INFO, ZREF_ENDU_CONTINENT);
+
+                makeMenu.apply(ZREF_PCN_PCNNEW_INFO, ZREF_PCN_PCNNEW);
+                makeMenu.apply(ZREF_PCN_PCNYEAR_INFO, ZREF_PCN_PCNYEAR);
+                makeMenu.apply(ZREF_PCN_PCNMONTH_INFO, ZREF_PCN_PCNMONTH);
+                makeMenu.apply(ZREF_PCN_PCNDAY_INFO, ZREF_PCN_PCNDAY);
+                makeMenu.apply(ZREF_PCN_PCNCOUNTRIES_INFO, ZREF_PCN_PCNCOUNTRIES);
+
+                makeMenu.apply(ZREF_COMP_COMPCHREASON_INFO, ZREF_COMP_COMPCHREASON);
+                makeMenu.apply(ZREF_COMP_COMPCHTYPE_INFO, ZREF_COMP_COMPCHTYPE);
+                makeMenu.apply(ZREF_COMP_COMPCHVAT_INFO, ZREF_COMP_COMPCHVAT);
+
+            "
+    >
+        <option value="SELECT">Select Gen Variant</option>
+        <optgroup label="FOR LIST ONLY!!!">
+            <option value="OCC">OCC Load Decision</option>
+		</optgroup>
+		<optgroup label="FOR PURE&REACH ONLY!!!">
+            <option value="PHYSC">PhysChem</option>
+      	    <option value="TOX">Tox and Ecotox</option>
+			<option value="REG">Substance Registrations</option>	
+		</optgroup>
+    	<optgroup label="FOR RAW ONLY!!!">
+      		<option value="SDSAM">Americas Supplier SDS</option>
+      		<option value="SDSAP">APAC Supplier SDS</option>
+			<option value="SDSEU">EAME Supplier SDS</option>
+			<option value="QST">Supplier Questionnaire</option>
+    	</optgroup>
+    	<optgroup label="FOR REAL ONLY!!!">
+            <option value="BPDS">Basic Product Data Sheet</option>
+            <option value="COMP">Product Compositon Setup</option>
+            <option value="ENDU">Product End Use</option>
+			<option value="PCN">Product Registration</option>
+		</optgroup>
+		<optgroup label="LIMIT USE!!!">
+			<option value="OTHER">Other</option>
+    	</optgroup>
+    </select>
+<span id="genVarStatus"></span>
+</div>
+
+<div id="menuBody" class="gridContainer"></div>
+
+<div id="docNameDiv" class="outputStyle">
+    <labe id="docNameLabel" for="docName">Document Name: </labe>
+    <input type="text" id="docName">
+    <button title="Update Doc Name Output String" onclick="makeTwoStrings()">✎</button>
+    <button title="Save Doc Name Output String to ClipBoard" onclick="copydocNameToClipboard();">🖬</button>
+    <label id="genVarNameLabel" for="genVarName">Gen Variant Name: </label>
+    <input type="text" id="genVarName">
+    <button title="Update Gen Var Output String" onclick="makeTwoStrings()">✎</button>
+    <button title="Save Gen Var Output String to ClipBoard" onclick="copygenVarNameToClipboard();">🖬</button>
+</div>
+</div>
+
+<script>
+hideMenus();
+creatMenuLabelSelectandSpan.apply(null, [
+    "occReason", "occCountry(SEARCH)",
+    "physC", "tox", "physCToxDocYear","physCToxDocType", "regDocYear" , "reg",
+    "physCVat(SEARCH)", "physCProtocol(SEARCH)",
+    "toxVat(SEARCH)", "toxProtocol(SEARCH)",
+    "sdsAm(SEARCH)", "sdsAP(SEARCH)", "sdsEU(SEARCH)",
+    "sdsLang", "sdsType", "sdsMajor", "sdsMinor", "sdsYear", "sdsMonth", "sdsDay", "sdsSupplier(SEARCH)",
+    "npiNew", "npiYear(SEARCH)", "npiMonth", "npiDay", "npiRequestor",
+    "applArea", "endU",
+    "pcnNew", "pcnYear", "pcnMonth", "pcnDay", "pcnCountries",
+    "compChReason", "compChType", "compChVat"
+]);
+/*START REAL DATA*/
+
+/*START PHYSCHEM AND TOX*/
+ZREF_OCC_OCCREASON_INFO = {inDD: "genVar", inOpt: "OCC", outLabel: "Reason", outInfo: "Reason for OCC Load decision", outDD: "occReason"};
+ZREF_OCC_OCCREASON = ["Select Reason|SELECT", "Alternative CAS|ALTCAS", "Exclude CAS|EXCLCAS", "Substance Nature|SUBNAT"];
+
+ZREF_OCC_OCCCOUNTRY_INFO = {inDD: "genVar", inOpt: "OCC", outLabel: "Country of Load Decision", outInfo: "Country of Alt or Excluded CAS number of Load decision", outDD: "occCountry(SEARCH)"};
+ZREF_OCC_OCCCOUNTRY = ["Select Country|SELECT", "Not Applicable|NOTAPPLIC", "Afghanistan|AF", "Aland Islands|AX", "Albania|AL", "Algeria|DZ", "American Samoa|AS", "Andorra|AD", "Angola|AO", "Anguilla|AI", "Antarctica|AQ", "Antigua and Barbuda|AG", "Argentina|AR", "Armenia|AM", "Aruba|AW", "Australia|AU", "Austria|AT", "Azerbaijan|AZ", "Bahamas|BS", "Bahrain|BH", "Bangladesh|BD", "Barbados|BB", "Belarus|BY", "Belgium|BE", "Belize|BZ", "Benin|BJ", "Bermuda|BM", "Bhutan|BT", "Bolivia|BO", "Bosnia and Herzegovina|BA", "Botswana|BW", "Bouvet Island|BV", "Brazil|BR", "British Indian Ocean Territory|IO", "British Virgin Islands|VG", "Brunei Darussalam|BN", "Bulgaria|BG", "Burkina Faso|BF", "Burundi|BI", "Cambodia|KH", "Cameroon|CM", "Canada|CA", "Cape Verde|CV", "Cayman Islands |KY", "Central African Republic|CF", "Chad|TD", "Chile|CL", "China|CN", "Christmas Island|CX", "Cocos (Keeling) Islands|CC", "Colombia|CO", "Comoros|KM", "Congo (Brazzaville)|CG", "Congo (Kinshasa)|CD",
+"Cook Islands |CK", "Costa Rica|CR", "Côte d'Ivoire|CI", "Croatia|HR", "Cuba|CU", "Cyprus|CY", "Czech Republic|CZ", "Denmark|DK", "Djibouti|DJ", "Dominica|DM", "Dominican Republic|DO", "Ecuador|EC", "Egypt|EG", "El Salvador|SV", "Equatorial Guinea|GQ", "Eritrea|ER", "Estonia|EE", "Ethiopia|ET", "European Single Market|EEA", "European Union|EU", "Falkland Islands (Malvinas) |FK", "Faroe Islands|FO", "Fiji|FJ", "Finland|FI", "France|FR", "French Guiana|GF", "French Polynesia|PF", "French Southern Territories|TF", "Gabon|GA", "Gambia|GM", "Georgia|GE", "Germany|DE", "Ghana|GH", "Gibraltar |GI", "Greece|GR", "Greenland|GL", "Grenada|GD", "Guadeloupe|GP", "Guam|GU", "Guatemala|GT", "Guernsey|GG", "Guinea|GN", "Guinea-Bissau|GW", "Guyana|GY", "Haiti|HT", "Heard and Mcdonald Islands|HM", "Holy See (Vatican City State)|VA", "Honduras|HN", "Hong Kong|HK", "Hungary|HU", "Iceland|IS", "India|IN", "Indonesia|ID", "Iran|IR", "Iraq|IQ", "Ireland|IE", "Isle of Man |IM", "Israel|IL",
+"Italy|IT", "Jamaica|JM", "Japan|JP", "Jersey|JE", "Jordan|JO", "Kazakhstan|KZ", "Kenya|KE", "Kiribati|KI", "Korea (North)|KP", "Korea (South)|KR", "Kuwait|KW", "Kyrgyzstan|KG", "Lao PDR|LA", "Latvia|LV", "Lebanon|LB", "Lesotho|LS", "Liberia|LR", "Libya|LY", "Liechtenstein|LI", "Lithuania|LT", "Luxembourg|LU", "Macao|MO", "Macedonia|MK", "Madagascar|MG", "Malawi|MW", "Malaysia|MY", "Maldives|MV", "Mali|ML", "Malta|MT", "Marshall Islands|MH", "Martinique|MQ", "Mauritania|MR", "Mauritius|MU", "Mayotte|YT", "Mexico|MX", "Micronesia|FM", "Moldova|MD", "Monaco|MC", "Mongolia|MN", "Montenegro|ME", "Montserrat|MS", "Morocco|MA", "Mozambique|MZ", "Myanmar|MM", "Namibia|NA", "Nauru|NR", "Nepal|NP", "Netherlands|NL", "Netherlands Antilles|AN", "New Caledonia|NC", "New Zealand|NZ", "Nicaragua|NI", "Niger|NE", "Nigeria|NG", "Niue |NU", "Norfolk Island|NF", "Northern Mariana Islands|MP", "Norway|NO", "Oman|OM", "Pakistan|PK", "Palau|PW", "Palestinian Territory|PS", "Panama|PA",
+"Papua New Guinea|PG", "Paraguay|PY", "Peru|PE", "Philippines|PH", "Pitcairn|PN", "Poland|PL", "Portugal|PT", "Puerto Rico|PR", "Qatar|QA", "Réunion|RE", "Romania|RO", "Russian Federation|RU", "Rwanda|RW", "Saint Helena|SH", "Saint Kitts and Nevis|KN", "Saint Lucia|LC", "Saint Pierre and Miquelon |PM", "Saint Vincent and Grenadines|VC", "Saint-Barthélemy|BL", "Saint-Martin (French part)|MF", "Samoa|WS", "San Marino|SM", "Sao Tome and Principe|ST", "Saudi Arabia|SA", "Senegal|SN", "Serbia|RS", "Seychelles|SC", "Sierra Leone|SL", "Singapore|SG", "Slovakia|SK", "Slovenia|SI", "Solomon Islands|SB", "Somalia|SO", "South Africa|ZA", "South Georgia and the South Sandwich Islands|GS", "South Sudan|SS", "Spain|ES", "Sri Lanka|LK", "Sudan|SD", "Suriname|SR", "Svalbard and Jan Mayen Islands |SJ", "Swaziland|SZ", "Sweden|SE", "Switzerland|CH", "Syrian Arab Republic (Syria)|SY", "Taiwan|TW", "Tajikistan|TJ", "Tanzania|TZ", "Thailand|TH", "Timor-Leste|TL", "Togo|TG", "Tokelau |TK",
+"Tonga|TO", "Trinidad and Tobago|TT", "Tunisia|TN", "Turkey|TR", "Turkmenistan|TM", "Turks and Caicos Islands |TC", "Tuvalu|TV", "Uganda|UG", "Ukraine|UA", "United Arab Emirates|AE", "United Kingdom|GB", "United States of America|US", "Uruguay|UY", "US Minor Outlying Islands|UM", "Uzbekistan|UZ", "Vanuatu|VU", "Venezuela (Bolivarian Republic)|VE", "Viet Nam|VN", "Virgin Islands (US)|VI", "Wallis and Futuna Islands |WF", "Western Sahara|EH", "Yemen|YE", "Zambia|ZM", "Zimbabwe|ZW"];
+
+ZREF_PHYSC_DOCYEAR_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "Document Year", outInfo: "Choose the Year of Document", outDD: "physCToxDocYear"};
+ZREF_TOX_DOCYEAR_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Document Year", outInfo: "Choose the Year of Document", outDD: "physCToxDocYear"};
+ZREF_PHYSCTOX_DOCYEAR = ["Select Year|SELECT", "2022|2022", "2021|2021", "2020|2020", "2019|2019", "2018|2018", "2017|2017", "2016|2016", "2015|2015", "2014|2014", "2013|2013", "2012|2012", "2011|2011", "2010|2010", "2009|2009", "2008|2008", "2007|2007", "2006|2006", "2005|2005", "2004|2004", "2003|2003", "2002|2002", "2001|2001", "2000|2000", "Unknown|XXXX"];
+
+ZREF_PHYSC_DOCTYPE_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "Document Type", outInfo: "Choose the Type of Document", outDD: "physCToxDocType"};
+ZREF_TOX_DOCTYPE_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Document Type", outInfo: "Choose the Type of Document", outDD: "physCToxDocType"};
+ZREF_PHYSCTOX_DOCTYPE = ["Select Doc Type|SELECT", "Final Test Report|FTESTR", "Draft Test Report|FTESTR", "QSAR Modelling|QSAR", "CHESAR Modelling|CHESAR", "Chemical Safety Report|CSR", "Expert Judgement or Justification|EXPJUDGE"];
+
+ZREF_PHYSC_DOCTYPE_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "Document Type", outInfo: "Choose the Type of Document", outDD: "physCToxDocType"};
+ZREF_TOX_DOCTYPE_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Document Type", outInfo: "Choose the Type of Document", outDD: "physCToxDocType"};
+ZREF_PHYSCTOX_READACROSS = ["Select if Study is on this Substance|SELECT", "Not a Read-Across|NOTRA", "Read-Across|RA", "Not Applicable|NOTAPPL"];
+
+ZREF_PHYSC_PHYSCGROUPS_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "PhysChem or Safety", outInfo: "Choose the group of Endpoints", outDD: "physC"};
+ZREF_PHYSC_PHYSCGROUPS = ["Select Endpoint|SELECT", "Physical-Chemical Properties|PHYSC_PHY", "Safety Data|PHYSC_SAF"];
+
+ZREF_PHYSC_PHYSCVATS_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "Value Assignment Tab", outInfo: "Choose the VAT", outDD: "physCVat(SEARCH)"};
+ZREF_PHYSC_PHYSCVATS = ["Select PhysChem Endpoint|SELECT", "State of Matter|1013_001", "Flow Time|1013_002", "Vapor Pressure|1013_003", "Vapor Pressure for Components|1013_004", "Density|1013_005", "Relative Density|1013_006", "Solids in Solution|1013_007", "Color|1013_008", "Form|1013_009", "Odor|1013_010", "Henry's Constant|1013_011", "Hygroscopicity|1013_012", "Solubility|1013_013", "Solubility (Qualitative)|1013_014", "Phys.-Chem./Other Information|1013_015", "Solubility in Water|1013_016", "Magnetism|1013_017", "Miscibility with Water|1013_018", "pH|1013_019", "pKa|1013_020", "Phase Transition Solid/Liquid|1013_021", "Phase Transition Liquid/Gas|1013_022", "Phase Transition Solid/Gas|1013_023", "Bulk Density|1013_024", "Thixotropy|1013_025", "Partition Coefficient n-Octanol/Water|1013_026", "Viscosity Dynamic|1013_027", "Viscosity Kinematic|1013_028", "Acid Number|1013_029", "Relative Vapor Density|1013_030", "Corrosion of Metals|1013_031",
+"Evaporation Rate|1013_032", "Type of Mixture|1013_033", "Surface Tension|1013_034", "Hydrolysis Rate|1013_035", "Molar Mass|1013_037", "Mean Cubic Coefficient of Expansion|1013_038", "Undissolved Solids|1013_039", "Particle Size|1013_040",
+"Gross Calorific Value (GCV)|1013_041", "Net Calorific Value (NCV)|1013_042", "Shear Strength|1013_043", "Axial Deformation|1013_044", "Unconfined Compression Strength|1013_045", "Slow-Evaporating Lipophilic Substances|1013_046", "Extractable Part of Original Substance|1013_047", "Extractable Lipophilic Substances|1013_048", "Ignition Loss of Dry Residue|1013_049", "Ash Content|1013_050", "Water-Soluble Proportion|1013_051", "Conductance|1013_052", "Acid Content|1013_053", "Base Content|1013_054", "Form/Design Radioactive Substances|1013_055", "Relative Net Explosive Subst. Percentage|1013_056", "Relative Maximum Activity|1013_057", "Oxidation/Reduction Potential|1013_058", "Refractive Index|1013_059", "Measurement Method|1013_060", "Odor Threshold|1013_061", "Particle Size Distribution|1013_069", "Specific Surface Area|1013_070", "Surface Charge|1013_071",
+"Burning Rate|1014_001", "Self Ignition|1014_002", "Formation of Flammable Gases|1014_003", "Oxidizing|1014_004", "Burning Number|1014_005", "Vapor Formed on Contact with Air|1014_006", "Flammability|1014_007", "Explosiveness|1014_008", "Flash Point|1014_009", "Solvent Separation Test|1014_010", "Dust Explosion Description Number Kst|1014_011", "Upper Explosion/Flammability Limit|1014_012", "Lower Explosion/Flammability Limit|1014_013", "Peroxides|1014_014", "Radioactivity|1014_015", "Self Heating|1014_016", "Impact Sensitivity|1014_017", "Reactions with Water/Air|1014_018", "Hazardous Reactions|1014_019", "Decomposition Products|1014_020", "Thermal Decomposition|1014_021", "Ignition Temperature|1014_022", "Dust Explosion Class|1014_023", "Smolder|1014_024", "Temperature Class|1014_025", "Combust. Liquids Hazard Class (DE AT DA)|1014_026", "Classification of Fires|1014_027", "SADT|1014_028", "Safety Remarks|1014_029",
+"Conditions to Avoid (SDS)|1014_030", "Substances to Avoid (SDS)|1014_031", "Minimum Ignition Energy|1014_032", "Reactivity|1014_033", "Chemical Stability|1014_034", "Fire Point|1014_035", "Heat of Combustion|1014_036",
+"Fire Service Law Input Data|1014_037", "Asphyxiation Hazard|1014_038", "Compressed Gas Pressure|1014_039", "Other Physical Hazards|1014_040", "Minimum Explosible Concentration|1014_041", "SAPT|1014_042"];
+
+ZREF_PHYSC_PHYSCPROTOCOLS_INFO = {inDD: "genVar", inOpt: "PHYSC", outLabel: "Test Protocol", outInfo: "Choose the Test Protocol", outDD: "physCProtocol(SEARCH)"};
+ZREF_PHYSC_PHYSCPROTOCOLS = ["Select Testing Protocol|SELECT", "UV-VIS absorption spectra|OECD101", "Melting point/Melting range|OECD102", "Boiling point|OECD103", "Vapour pressure|OECD104", "Water solubility|OECD105", "Adsorption – Desorption Using a Batch Equilibrium Method|OECD106", "Partition coefficient (n-octanol/water) Shake Flask Method|OECD107", "Complex formation ability in water|OECD108", "Density of liquids and solids|OECD109", "Particle size distribution and fibre length and diameter distributions|OECD110", "Hydrolysis as a function of pH|OECD111", "Dissociation constants in water|OECD112", "Screening test for thermal stability and stability in air|OECD113", "Viscosity of liquids|OECD114", "Surface tension of aqueous solutions|OECD115", "Fat solubility of solid and liquid substances|OECD116", "Partition coefficient (n-octanol over water) HPLC Method|OECD117",
+"Determination of the Number-Average MW and the MW distrib of poly using Gel Permeation Chromatography|OECD118", "Determination of the Low MW Content of a Polymer Using Gel Permeation Chromatography|OECD119", "Solution and Extraction Behaviour of Polymers in Water|OECD120", "Estimation of the adsorption coeff (KOC) on Soil and on sewage sludge using HPLC|OECD121", "Determination of pH Acidity and Alkalinity|OECD122", "Partition coefficient (1-Octanol over Water) Slow-Stirring Method|OECD123"];
+
+ZREF_TOX_TOXGROUPS_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Toxicology Type", outInfo: "Choose the group of Endpoints", outDD: "tox"};
+ZREF_TOX_TOXGROUPS = ["Select Endpoint|SELECT", "Environmental Fate and Pathway|TOX_ENV", "Ecotoxicology|TOX_ECO", "Toxicology|TOX_TOX"];
+
+ZREF_TOX_TOXVATS_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Value Assignmnet Tab", outInfo: "Choose the VAT", outDD: "toxVat(SEARCH)"};
+
+ZREF_TOX_TOXVAT_GROUPING = ["Select VAT|SELECT"];
+ZREF_TOX_TOXVAT_ENV = ["Photodegradation|1017_001", "Stability in Water|1017_002", "Stability in Soil|1017_003", "Biodegradation|1017_004", "Physico-Chemical Elimination|1017_005", "Important Modes of Degradation|1017_006", "Biological Oxygen Demand (BOD)|1017_007", "Chemical Oxygen Demand (COD)|1017_008", "Ratio BOD/COD|1017_009", "Theoret. Biological O2 Demand (ThBOD)|1017_010", "Ratio BOD/ThBOD|1017_011", "Dissolved Organic Carbon (DOC)|1017_012", "Total Organic Carbon (TOC)|1017_013", "Assessment Biodegradation & Elimin. H2O|1017_014", "Bioaccumulation|1017_015", "Monitoring Environment Data|1017_016", "Transport Between Environm. Compartments|1017_017", "Distribution in Environment|1017_018", "Addit. Remarks Environm. Fate & Pathway|1017_019", "Adsorption Organ. Bound Halogen (AOX)|1017_020", "Assessment PBT|1017_021"];
+ZREF_TOX_TOXVAT_ECO = ["Acute and Prolonged Toxicity to Fish|1018_001", "Acute Toxicity to Aquatic Invertebrates|1018_002", "Toxicity to Aquatic Plants|1018_003", "Toxicity to Microorganisms|1018_004", "Chronic Toxicity to Fish|1018_005", "Chronic Toxicity to Aquat. Invertebrates|1018_006", "Toxicity to Soil-Dwelling Organisms|1018_007", "Toxicity to Terrestrial Plants|1018_008", "Toxicity to Above-Ground Organisms|1018_009", "Biological Effects Monitoring|1018_010", "Biotransformation and Kinetics|1018_011", "Additional Ecotoxicological Remarks|1018_012", "Assessment Ecotoxicity|1018_013", "Sediment Toxicity|1018_014", "Portion w. Unknown Acute Aquat. Toxicity|1018_015", "Potential to Disrupt Endocrine Systems|1018_016"];
+ZREF_TOX_TOXVAT_TOX = ["Acute Oral Toxicity|1019_001", "Acute Inhalation Toxicity|1019_002", "Acute Dermal Toxicity|1019_003", "Acute Toxicity Other Routes|1019_004", "Skin Irritation|1019_005", "Eye Irritation|1019_006", "Sensitization|1019_007", "Repeated Dose Toxicity|1019_008", "Genetic Toxicity in Vitro|1019_009", "Genetic Toxicity in Vivo|1019_010", "Carcinogenicity|1019_011", "Assessment Carcinogenicity|1019_012", "Toxicity to Reproduction/Fertility|1019_013", "Assessment Mutagenicity|1019_014", "Developmental Toxicity/Teratogenicity|1019_015", "Assessment Teratogenicity|1019_016", "Other Relevant Toxicity Information|1019_017", "Experiences with Human Exposure: General|1019_018", "Assessment Toxicity to Reproduction|1019_019", "Epidemiology|1019_020", "Neurological Effects|1019_021", "Experiences with Human Exp.: Inhalation|1019_022", "Experiences w. Human Exp.: Skin Contact|1019_023",
+"Experiences with Human Exp.: Eye Contact|1019_024", "Experiences with Human Exp.: Ingestion|1019_025", "Assessment CMR|1019_026", "Aspiration Toxicity Hazard|1019_027", "Assessment Toxicology|1019_028",
+"Assessment STOT - Single Exposure|1019_029", "Assessment STOT - Repeated Exposure|1019_030", "Portion with Unknown Acute Toxicity|1019_031", "Reprod.Tox./Fertility|1019_032", "Reprod.Tox./Development/Teratogenicity|1019_033", "Health Hazard Statements|1019_034", "Specific Risk Assessment (Toxicology)|1019_035", "Other Health Hazards|1019_036"];
+ZREF_TOX_TOXVATS = ZREF_TOX_TOXVAT_GROUPING.concat(ZREF_TOX_TOXVAT_ENV).concat(ZREF_TOX_TOXVAT_ECO).concat(ZREF_TOX_TOXVAT_TOX);
+
+ZREF_TOX_TOXPROTOCOLS_INFO = {inDD: "genVar", inOpt: "TOX", outLabel: "Test Protocol", outInfo: "Choose the Test Protocol", outDD: "toxProtocol(SEARCH)"};
+
+ZREF_TOX_TOXPROTOCOLS_GROUPING = ["Select VAT|SELECT"];
+ZREF_TOX_TOXPROTOCOLS_ENV_OECD = ["OECD301 - Ready Biodegradability|OECD301", "OECD302A - Inherent Biodegradability: Modified SCAS Test|OECD302A", "OECD302B - Inherent Biodegradability: Zahn-Wellens/EVPA Test|OECD302B", "OECD302C - Inherent Biodegradability: Modified MITI Test (II)|OECD302C", "OECD303 - Simulation Test – Aerobic Sewage Treatment – A: Activated Sludge Units B: Biofilms|OECD303", "OECD304A - Inherent Biodegradability in Soil|OECD304A", "OECD305 - Bioaccumulation in Fish: Aqueous and Dietary Exposure|OECD305", "OECD306 - Biodegradability in Seawater|OECD306", "OECD307 - Aerobic and Anaerobic Transformation in Soil|OECD307", "OECD308 - Aerobic and Anaerobic Transformation in Aquatic Sediment Systems|OECD308", "OECD309 - Aerobic Mineralisation in Surface Water – Simulation Biodegradation Test|OECD309", "OECD310 - Ready Biodegradability – CO2 in sealed vessels (Headspace Test)|OECD310",
+"OECD311 - Anaerobic Biodegradability of Organic Compounds in Digested Sludge: by Measurement of Gas Production|OECD311",
+"OECD312 - Leaching in Soil Columns|OECD312", "OECD313 - Estimation of Emissions from Preservative – Treated Wood to the Environment|OECD313", "OECD314 - Simulation Tests to Assess the Biodegradability of Chemicals Discharged in Wastewater|OECD314", "OECD315 - Bioaccumulation in Sediment-dwelling Benthic Oligochaetes|OECD315", "OECD316 - Phototransformation of Chemicals in Water – Direct Photolysis|OECD316", "OECD317 - Bioaccumulation in Terrestrial Oligochaetes|OECD317"];
+ZREF_TOX_TOXPROTOCOLS_ENV_OPPTS = ["OPPTS835.0001 - Principles and Strategies Related to Biodegradation Testing of Organic Chemicals under the Toxic Substances Control Act (TSCA) (November 2008)|OPPTS835.0001", "OPPTS835.1110 - Activated Sludge Sorption Isotherm (January 1998)|OPPTS835.1110", "OPPTS835.1210 - Soil Thin Layer Chromatography (January 1998)|OPPTS835.1210", "OPPTS835.1220 - Sediment and Soil Adsorption/Desorption Isotherm (January 1998)|OPPTS835.1220", "OPPTS835.1230 - Adsorption/Desorption (Batch Equilibrium) (November 2008)|OPPTS835.1230", "OPPTS835.1240 - Leaching Studies (November 2008)|OPPTS835.1240", "OPPTS835.1410 - Laboratory Volatility (November 2008)|OPPTS835.1410", "OPPTS835.2120 - Hydrolysis (November 2008)|OPPTS835.2120", "OPPTS835.2130 - Hydrolysis as a Function of pH and Temperature (January 1998)|OPPTS835.2130", "OPPTS835.2210 - Direct Photolysis Rate in Water by Sunlight (January 1998))|OPPTS835.2210",
+"OPPTS835.2240 - Photodegradation in Water (November 2008)|OPPTS835.2240",
+"OPPTS835.2310 - Maximum Direct Photolysis Rate in Air from UV/Visible Spectroscopy (January 1998)|OPPTS835.2310", "OPPTS835.2370 - Photodegradation in Air (November 2008)|OPPTS835.2370", "OPPTS835.2410 - Photodegradation in Soil (November 2008)|OPPTS835.2410", "OPPTS835.3100 - Aerobic Aquatic Biodegradation (January 1998)|OPPTS835.3100", "OPPTS835.3110 - Ready Biodegradability (January 1998)|OPPTS835.3110", "OPPTS835.3140 - Ready Biodegradability – CO2 in Sealed Vessels (Headspace Test) (November 2008) [SUPERSEDES 3120]|OPPTS835.3140", "OPPTS835.3160 - Biodegradability in Sea Water (January 1998)|OPPTS835.3160", "OPPTS835.3170 - Shake Flask Die-Away Test (January 1998)|OPPTS835.3170", "OPPTS835.3180 - Sediment/Water Microcosm Biogradation Test (January 1998)|OPPTS835.3180", "OPPTS835.3190 - Aerobic Mineralization in Surface Water – Simulation Biodegradation Test (October 2008)|OPPTS835.3190", "OPPTS835.3200 - Zahn-Wellens/EMPA Test (January 1998)|OPPTS835.3200",
+"OPPTS835.3210 - Modified SCAS Test (January 1998)|OPPTS835.3210", "OPPTS835.3215 - Inherent Biodegradability – Concawe Test (October 2008)|OPPTS835.3215", "OPPTS835.3220 - Porous Pot Test (January 1998)|OPPTS835.3220", "OPPTS835.3240 - Simulation Test – Aerobic Sewage Treatment: A. Activated Sludge Units (October 2008)|OPPTS835.3240", "OPPTS835.3260 - Simulation Test – Aerobic Sewage Treatment: B. Biofilms (October 2008)|OPPTS835.3260", "OPPTS835.3280 - Simulation Tests to  Assess the Primary and Ultimate Biodegradability of Chemicals Discharged to Wastewater (October 2008)|OPPTS835.3280", "OPPTS835.3300 - Soil Biodegradation (January 1998)|OPPTS835.3300", "OPPTS835.3400 - Anaerobic Biodegradability of Organic Chemicals (January 1998)|OPPTS835.3400", "OPPTS835.3420 - Anaerobic Biodegradability of Organic Compounds in Digested Sludge: By Measurement of Gas Production (October 2008)|OPPTS835.3420",
+"OPPTS835.4100 - Aerobic Soil Metabolism (October 2008)|OPPTS835.4100",
+"OPPTS835.4200 - Anaerobic Soil Metabolism (October 2008)|OPPTS835.4200", "OPPTS835.4300 - Aerobic Aquatic Metabolism (October 2008)|OPPTS835.4300", "OPPTS835.4400 - Anaerobic Aquatic Metabolism (October 2008)|OPPTS835.4400", "OPPTS835.5045 - Modified SCAS Test for Insoluble and Volatile Chemicals (January 1998)|OPPTS835.5045", "OPPTS835.5154 - Anaerobic Biodegradation in the Subsurface (January 1998)|OPPTS835.5154", "OPPTS835.5270 - Indirect Photolysis Screening Test: Sunlight Photolysis in Waters Containing Dissolved Humic Substances (January 1998)|OPPTS835.5270", "OPPTS835.6100 - Terrestrial Field Dissipation (October 2008)|OPPTS835.6100", "OPPTS835.6200 - Aquatic (Sediment) Field Dissipation (October 2008)|OPPTS835.6200", "OPPTS835.6300 - Forestry Dissipation (October 2008)|OPPTS835.6300", "OPPTS835.6400 - Combination and Tank Mixes Field Dissipation (October 2008)|OPPTS835.6400",
+"OPPTS835.7100 - Guidance for Prospective Ground-Water Monitoring Studies|OPPTS835.7100",
+"OPPTS835.8100 - Field Volatility (November 2008)|OPPTS835.8100"];
+ZREF_TOX_TOXPROTOCOLS_ECO_OECD  = ["OECD201 - Freshwater Alga and Cyanobacteria Growth Inhibition Test|OECD201", "OECD202 - Daphnia sp. Acute Immobilisation Test|OECD202", "OECD203 - Fish Acute Toxicity Test|OECD203", "OECD204 - Fish Prolonged Toxicity Test: 14-Day Study|OECD204", "OECD205 - Avian Dietary Toxicity Test|OECD205", "OECD206 - Avian Reproduction Test|OECD206", "OECD207 - Earthworm Acute Toxicity Tests|OECD207", "OECD208 - Terrestrial Plant Test: Seedling Emergence and Seedling Growth Test|OECD208", "OECD209 - Activated Sludge Respiration Inhibition Test (Carbon and Ammonium Oxidation)|OECD209", "OECD210 - Fish Early-life Stage Toxicity Test|OECD210", "OECD211 - Daphnia magna Reproduction Test|OECD211", "OECD212 - Fish Short-term Toxicity Test on Embryo and Sac-Fry Stages|OECD212", "OECD213 - Honeybees Acute Oral Toxicity Test|OECD213", "OECD214 - Honeybees Acute Contact Toxicity Test|OECD214", "OECD215 - Fish Juvenile Growth Test|OECD215",
+"OECD216 - Soil Microorganisms: Nitrogen Transformation Test|OECD216",
+"OECD217 - Soil Microorganisms: Carbon Transformation Test|OECD217","OECD218 - Sediment-Water Chironomid Toxicity Using Spiked Sediment|OECD218", "OECD219 - Sediment-Water Chironomid Toxicity Using Spiked Water|OECD219", "OECD220 - Enchytraeid Reproduction Test|OECD220", "OECD221 - Lemna sp. Growth Inhibition Test|OECD221", "OECD222 - Earthworm Reproduction Test (Eisenia fetida/Eisenia andrei)|OECD222", "OECD223 - Avian Acute Oral Toxicity Test|OECD223", "OECD224 - Determination of the Inhibition of the Activity of Anaerobic Bacteria|OECD224", "OECD225 - Sediment-Water Lumbriculus Toxicity Test Using Spiked Sediment|OECD225", "OECD226 - Predatory mite (Hypoaspis (Geolaelaps) aculeifer) reproduction test in soil|OECD226", "OECD227 - Terrestrial Plant Test: Vegetative Vigour Test|OECD227",
+"OECD228 - Determination of Developmental Toxicity of a Test Chemical to Dipteran Dung Flies (Scathophaga stercoraria L. (Scathophagidae) Musca autumnalis De Geer (Muscidae))|OECD228",
+"OECD229 - Fish Short Term Reproduction Assay|OECD229", "OECD230 - 21-day Fish Assay|OECD230", "OECD231 - Amphibian Metamorphosis Assay|OECD231", "OECD232 - Collembolan Reproduction Test in Soil|OECD232", "OECD233 - Sediment-Water Chironomid Life-Cycle Toxicity Test Using Spiked Water or Spiked Sediment|OECD233", "OECD234 - Fish Sexual Development Test|OECD234", "OECD235 - Chironomus sp. Acute Immobilisation Test|OECD235", "OECD236 - Fish Embryo Acute Toxicity (FET) Test|OECD236", "OECD237 - Honey Bee (Apis Mellifera) Larval Toxicity Test Single Exposure|OECD237", "OECD238 - Sediment-Free Myriophyllum Spicatum Toxicity Test|OECD238", "OECD239 - Water-Sediment Myriophyllum Spicatum Toxicity Test|OECD239", "OECD240 - Medaka Extended One Generation Reproduction Test (MEOGRT)|OECD240", "OECD241 - The Larval Amphibian Growth and Development Assay (LAGDA)|OECD241"];
+ZREF_TOX_TOXPROTOCOLS_ECO_OPPTS = ["OPPTS850.1000 - Background and Special Considerations-Tests with Aquatic and Sediment-Dwelling Fauna and Aquatic Microcosms (December 2016)|OPPTS850.1000", "OPPTS850.1010 - Aquatic Invertebrate Acute Toxicity Test, Freshwater Daphnids (December 2016)|OPPTS850.1010", "OPPTS850.1020 - Gammarid Amphipod Acute Toxicity Test (December 2016)|OPPTS850.1020", "OPPTS850.1025 - Oyster Acute Toxicity Test (Shell Deposition) (December 2016)|OPPTS850.1025", "OPPTS850.1035 - Mysid Acute Toxicity Test (December 2016)|OPPTS850.1035", "OPPTS850.1045 - Penaeid Acute Toxicity Test (December 2016)|OPPTS850.1045", "OPPTS850.1055 - Bivalve Acute Toxicity Test (Embryo-Larval) (December 2016)|OPPTS850.1055", "OPPTS850.1075 - Freshwater and Saltwater Fish Acute Toxicity Test (December 2016)|OPPTS850.1075", "OPPTS850.1300 - Daphnid Chronic Toxicity Test (December 2016)|OPPTS850.1300",
+"OPPTS850.1400 - Fish Early Life Stage Toxicity Test (December 2016)|OPPTS850.1400",
+"OPPTS850.1710 - Oyster Bioconcentration Factor (BCF) (December 2016)|OPPTS850.1710", "OPPTS850.1730 - Fish Bioconcentration Factor (BCF) (December 2016)|OPPTS850.1730", "OPPTS850.1735 - Spiked Whole Sediment 10-Day Toxicity Test , Freshwater Invertebrates (December 2016)|OPPTS850.1735", "OPPTS850.1740 - Spiked Whole Sediment 10-Day Toxicity Test, Saltwater Invertebrates (December 2016)|OPPTS850.1740", "OPPTS850.2000 - Background and Special Considerations- Tests with Terrestrial Wildlife (June 2012)|OPPTS850.2000", "OPPTS850.2100 - Avian Acute Oral Toxicity Test (June 2012)|OPPTS850.2100", "OPPTS850.2200 - Avian Dietary Toxicity Test (June 2012)|OPPTS850.2200", "OPPTS850.2300 - Avian Reproduction Test (June 2012)|OPPTS850.2300", "OPPTS850.2400 - Wild Mammal Toxicity Testing (June 2012)|OPPTS850.2400", "OPPTS850.2500 - Field Testing for Terrestrial Wildlife (June 2012)|OPPTS850.2500",
+"OPPTS850.3000 - Background and Special Considerations- Tests with Terrestrial Beneficial Insects, Invertebrates and Microorganisms (June 2012)|OPPTS850.3000", "OPPTS850.3020 - Honey Bee Acute Contact Toxicity Test (June 2012)|OPPTS850.3020", "OPPTS850.3030 - Honey Bee Toxicity of Residues on Foliage (June 2012)|OPPTS850.3030", "OPPTS850.3040 - Field Testing for Pollinators (June 2012)|OPPTS850.3040", "OPPTS850.3100 - Earthworm Subchronic Toxicity Test (June 2012)|OPPTS850.3100", "OPPTS850.3200 - Soil Microbial Community Toxicity Test (June 2012)|OPPTS850.3200", "OPPTS850.3300 - Modified Activated Sludge, Respiration Inhibition Test (June 2012)|OPPTS850.3300", "OPPTS850.4000 - Background and Special Considerations-Tests with Terrestrial and Aquatic Plants, Cyanobacteria, and Terrestrial Soil-Core Microcosms (June 2012)|OPPTS850.4000", "OPPTS850.4100 - Seedling Emergence and Seedling Growth (June 2012)|OPPTS850.4100",
+"OPPTS850.4150 - Vegetative Vigor (June 2012)|OPPTS850.4150",
+"OPPTS850.4230 - Early Seedling Growth Toxicity Test (June 2012)|OPPTS850.4230", "OPPTS850.4300 - Terrestrial Plants Field Study (June 2012)|OPPTS850.4300", "OPPTS850.4400 - Aquatic Plant Toxicity Test Using Lemna spp. (June 2012)|OPPTS850.4400", "OPPTS850.4450 - Aquatic Plants Field Study (June 2012)|OPPTS850.4450", "OPPTS850.4500 - Algal Toxicity (June 2012)|OPPTS850.4500", "OPPTS850.4550 - Cyanobacteria (Anabaena flos-aquae) Toxicity (June 2012)|OPPTS850.4550", "OPPTS850.4600 - Rhizobium-Legume Toxicity (June 2012)|OPPTS850.4600", "OPPTS850.4800 - Plant Uptake and Translocation Test (June 2012)|OPPTS850.4800", "OPPTS850.4900 - Terrestrial Soil-Core Microcosm Test (June 2012)|OPPTS850.4900", "OPPTS850.6100 - Environmental Chemistry Methods and Associated Independent Laboratory Validation (June 2012)|OPPTS850.6100"];
+ZREF_TOX_TOXPROTOCOLS_TOX_OECD = ["OECD401 - Acute Oral Toxicity|OECD401", "OECD402 - Acute Dermal Toxicity|OECD402", "OECD403 - Acute Inhalation Toxicity|OECD403", "OECD404 - Acute Dermal Irritation/Corrosion|OECD404", "OECD405 - Acute Eye Irritation/Corrosion|OECD405", "OECD406 - Skin Sensitisation|OECD406", "OECD407 - Repeated Dose 28-day Oral Toxicity Study in Rodents|OECD407", "OECD408 - Repeated Dose 90-Day Oral Toxicity Study in Rodents|OECD408", "OECD409 - Repeated Dose 90-Day Oral Toxicity Study in Non-Rodents|OECD409", "OECD410 - Repeated Dose Dermal Toxicity: 21/28-day Study|OECD410", "OECD411 - Subchronic Dermal Toxicity: 90-day Study|OECD411", "OECD412 - Subacute Inhalation Toxicity: 28-Day Study|OECD412", "OECD413 - Subchronic Inhalation Toxicity: 90-day Study|OECD413", "OECD414 - Prenatal Development Toxicity Study|OECD414", "OECD415 - One-Generation Reproduction Toxicity Study|OECD415",
+"OECD416 - Two-Generation Reproduction Toxicity|OECD416", "OECD417 - Toxicokinetics|OECD417",
+"OECD418 - Delayed Neurotoxicity of Organophosphorus Substances Following Acute Exposure|OECD418", "OECD419 - Delayed Neurotoxicity of Organophosphorus Substances: 28-day Repeated Dose Study|OECD419", "OECD420 - Acute Oral Toxicity – Fixed Dose Procedure|OECD420", "OECD421 - Reproduction/Developmental Toxicity Screening Test|OECD421", "OECD422 - Combined Repeated Dose Toxicity Study with the Reproduction/Developmental Toxicity Screening Test|OECD422", "OECD423 - Acute Oral toxicity – Acute Toxic Class Method|OECD423", "OECD424 - Neurotoxicity Study in Rodents|OECD424", "OECD425 - Acute Oral Toxicity: Up-and-Down Procedure|OECD425", "OECD426 - Developmental Neurotoxicity Study|OECD426", "OECD427 - Skin Absorption: In Vivo Method|OECD427", "OECD428 - Skin Absorption: In Vitro Method|OECD428", "OECD429 - Skin Sensitisation|OECD429", "OECD430 - In Vitro Skin Corrosion: Transcutaneous Electrical Resistance Test Method (TER)|OECD430",
+"OECD431 - In Vitro Skin Corrosion: Reconstructed Human Epidermis (RHE) Test Method|OECD431", "OECD432 - In Vitro 3T3 NRU Phototoxicity Test|OECD432", "OECD435 - In Vitro Membrane Barrier Test Method for Skin Corrosion|OECD435", "OECD436 - Acute Inhalation Toxicity – Acute Toxic Class Method|OECD436", "OECD437 - Bovine Corneal Opacity and Permeability Test Method for Identifying i) Chemicals Inducing Serious Eye Damage and ii) Chemicals Not Requiring Classification for Eye Irritation or Serious Eye Damage|OECD437", "OECD438 - Isolated Chicken Eye Test Method for Identifying i) Chemicals Inducing Serious Eye Damage and ii) Chemicals Not Requiring Classification for Eye Irritation or Serious Eye Damage|OECD438", "OECD439 - In Vitro Skin Irritation: Reconstructed Human Epidermis Test Method|OECD439", "OECD440 - Uterotrophic Bioassay in Rodents|OECD440", "OECD441 - Hershberger Bioassay in Rats|OECD441",
+"OECD442A - Skin Sensitization|OECD442A", "OECD442B - Skin Sensitization|OECD442B", "OECD442C - In Chemico Skin Sensitisation|OECD442C", "OECD442D - In Vitro Skin Sensitisation|OECD442D", "OECD443 - Extended One-Generation Reproductive Toxicity Study|OECD443", "OECD451 - Carcinogenicity Studies|OECD451", "OECD452 - Chronic Toxicity Studies|OECD452", "OECD453 - Combined Chronic Toxicity/Carcinogenicity Studies|OECD453", "OECD455 - Draft Performance-Based Test Guideline for Stably Transfected Transactivation In Vitro Assays to Detect Estrogen Receptor Agonists and Antagonists|OECD455", "OECD456 - H295R Steroidogenesis Assay|OECD456", "OECD457 - BG1Luc Estrogen Receptor Transactivation Test Method for Identifying Estrogen Receptor Agonists and Antagonists|OECD457", "OECD460 - Fluorescein Leakage Test Method for Identifying Ocular Corrosives and Severe Irritants|OECD460", "OECD471 - Bacterial Reverse Mutation Test|OECD471",
+"OECD473 - In Vitro Mammalian Chromosomal Aberration Test|OECD473", "OECD474 - Mammalian Erythrocyte Micronucleus Test|OECD474", "OECD475 - Mammalian Bone Marrow Chromosomal Aberration Test|OECD475", "OECD476 - In Vitro Mammalian Cell Gene Mutation Tests using the Hprt and xprt genes|OECD476", "OECD477 - Genetic Toxicology: Sex-Linked Recessive Lethal Test in Drosophila melanogaster|OECD477", "OECD478 - Rodent Dominant Lethal Test|OECD478", "OECD479 - Genetic Toxicology: In vitro Sister Chromatid Exchange Assay in Mammalian Cells|OECD479", "OECD480 - Genetic Toxicology: Saccharomyces cerevisiae Gene Mutation Assay|OECD480", "OECD481 - Genetic Toxicology: Saacharomyces cerevisiae Miotic Recombination Assay|OECD481", "OECD482 - Genetic Toxicology: DNA Damage and Repair Unscheduled DNA Synthesis in Mammalian Cells in vitro|OECD482", "OECD483 - Mammalian Spermatogonial Chromosomal Aberration Test|OECD483", "OECD484 - Genetic Toxicology: Mouse Spot Test|OECD484",
+"OECD485 - Genetic toxicology Mouse Heritable Translocation Assay|OECD485", "OECD486 - Unscheduled DNA Synthesis (UDS) Test with Mammalian Liver Cells in vivo|OECD486", "OECD487 - In Vitro Mammalian Cell Micronucleus Test|OECD487", "OECD488 - Transgenic Rodent Somatic and Germ Cell Gene Mutation Assays|OECD488", "OECD489 - In Vivo Mammalian Alkaline Comet Assay|OECD489", "OECD490 - In Vitro Mammalian Cell Gene Mutation Tests Using the Thymidine Kinase Gene|OECD490", "OECD491 - Short Time Exposure In Vitro Test Method for Identifying i) Chemicals Inducing Serious Eye Damage and ii) Chemicals Not Requiring Classification for Eye Irritation or Serious Eye Damage|OECD491", "OECD492 - Reconstructed human Cornea-like Epithelium (RhCE) test method for identifying chemicals not requiring classification and labelling for eye irritation or serious eye damage|OECD492",
+"OECD493 - Performance-Based Test Guideline for Human Recombinant Estrogen Receptor (hrER) In Vitro Assays to Detect Chemicals with ER Binding Affinity|OECD493"];
+ZREF_TOX_TOXPROTOCOLS_TOX_OPPTS = ["OPPTS870.1000 - Acute Toxicity Testing--Background (December 2002)|OPPTS870.1000", "OPPTS870.1100 - Acute Oral Toxicity (December 2002)|OPPTS870.1100", "OPPTS870.1200 - Acute Dermal Toxicity (August 1998)|OPPTS870.1200", "OPPTS870.1300 - Acute Inhalation Toxicity (August 1998)|OPPTS870.1300", "OPPTS870.2400 - Acute Eye Irritation (August 1998)|OPPTS870.2400", "OPPTS870.2500 - Acute Dermal Irritation (August 1998)|OPPTS870.2500", "OPPTS870.2600 - Skin Sensitization (March 2003)|OPPTS870.2600", "OPPTS870.3050 - Repeated Dose 28-Day Oral Toxicity Study in Rodents (July 2000)|OPPTS870.3050", "OPPTS870.3100 - 90-Day Oral Toxicity in Rodents (August 1998)|OPPTS870.3100", "OPPTS870.3150 - 90-Day Oral Toxicity in Nonrodents (August 1998)|OPPTS870.3150", "OPPTS870.3200 - 21/28-Day Dermal Toxicity (August 1998)|OPPTS870.3200", "OPPTS870.3250 - 90-Day Dermal Toxicity (August 1998|OPPTS870.3250",
+"OPPTS870.3465 - 90-Day Inhalation Toxicity (August 1998)|OPPTS870.3465",
+"OPPTS870.3550 - Reproduction/Developmental Toxicity Screening Test (July 2000)|OPPTS870.3550", "OPPTS870.3650 - Combined Repeated Dose Toxicity Study with the Reproduction/Developmental Toxicity Screening Test (July 2000)|OPPTS870.3650", "OPPTS870.3700 - Prenatal Developmental Toxicity Study (August 1998)|OPPTS870.3700", "OPPTS870.3800 - Reproduction and Fertility Effects (August 1998)|OPPTS870.3800", "OPPTS870.4100 - Chronic Toxicity (August 1998)|OPPTS870.4100", "OPPTS870.4200 - Carcinogenicity (August 1998)|OPPTS870.4200", "OPPTS870.4300 - Combined Chronic Toxicity/Carcinogenicity (August 1998)|OPPTS870.4300", "OPPTS870.5100 - Bacterial Reverse Mutation Test (August 1998)|OPPTS870.5100", "OPPTS870.5140 - Gene Mutation in Aspergillus nidulans (August 1998)|OPPTS870.5140", "OPPTS870.5195 - Mouse Biochemical Specific Locus Test (August 1998)|OPPTS870.5195", "OPPTS870.5200 - Mouse Visible Specific Locus Test (August 1998)|OPPTS870.5200",
+"OPPTS870.5250 - Gene Mutation in Neurospora crassa (August 1998)|OPPTS870.5250", "OPPTS870.5275 - Sex-linked Recessive Lethal Test in Drosophila melanogaster (August 1998)|OPPTS870.5275", "OPPTS870.5300 - In vitro Mammalian Cell Gene Mutation Test (August 1998)|OPPTS870.5300", "OPPTS870.5375 - In vitro Mammalian Chromosome Aberration Test (August 1998)|OPPTS870.5375", "OPPTS870.5380 - Mammalian Spermatogonial Chromosomal Aberration Test (August 1998))|OPPTS870.5380", "OPPTS870.5385 - Mammalian Bone Marrow Chromosomal Aberration Test (August 1998)|OPPTS870.5385", "OPPTS870.5395 - Mammalian Erythrocyte Micronucleus Test (August 1998)|OPPTS870.5395", "OPPTS870.5450 - Rodent Dominant Lethal Assay (August 1998)|OPPTS870.5450", "OPPTS870.5460 - Rodent Heritable Translocation Assays (August 1998)|OPPTS870.5460", "OPPTS870.5500 - Bacterial DNA Damage or Repair Tests (August 1998)|OPPTS870.5500",
+"OPPTS870.5550 - Unscheduled DNA Synthesis in Mammalian Cells in Culture (August 1998)|OPPTS870.5550", "OPPTS870.5575 - Mitotic Gene Conversion in Saccharomyces cerevisiae (August 1998)|OPPTS870.5575", "OPPTS870.5900 - In vitro Sister Chromatid Exchange Assay (August 1998)|OPPTS870.5900", "OPPTS870.5915 - In vivo Sister Chromatid Exchange Assay (August 1998)|OPPTS870.5915", "OPPTS870.6100 - Acute and 28-Day Delayed Neurotoxicity of Organophosphorus Substances (August 1998)|OPPTS870.6100", "OPPTS870.6200 - Neurotoxicity Screening Battery (August 1998)|OPPTS870.6200", "OPPTS870.6300 - Developmental Neurotoxicity Study (August 1998)|OPPTS870.6300", "OPPTS870.6500 - Schedule-Controlled Operant Behavior (August 1998)|OPPTS870.6500", "OPPTS870.6850 - Peripheral Nerve Function (August 1998)|OPPTS870.6850", "OPPTS870.6855 - Neurophysiology Sensory Evoked Potentials (August 1998)|OPPTS870.6855",
+"OPPTS870.7200 - Companion Animal Safety (August 1998)|OPPTS870.7200", "OPPTS870.7485 - Metabolism and Pharmacokinetics (August 1998)|OPPTS870.7485", "OPPTS870.7600 - Dermal Penetration (August 1998)|OPPTS870.7600", "OPPTS870.7800 - Immunotoxicity (August 1998)|OPPTS870.7800", "OPPTS870.8355 - Combined Chronic Toxicity/Carcinogenicity Testing of Respirable Fibrous Particles (July 2001)|OPPTS870.8355"];
+ZREF_TOX_TOXPROTOCOLS_OTHER = ["Unknown|UNKNOWN"];
+ZREF_TOX_TOXPROTOCOLS = ZREF_TOX_TOXPROTOCOLS_GROUPING.concat(ZREF_TOX_TOXPROTOCOLS_ENV_OECD).concat(ZREF_TOX_TOXPROTOCOLS_ENV_OPPTS).concat(ZREF_TOX_TOXPROTOCOLS_ECO_OECD).concat(ZREF_TOX_TOXPROTOCOLS_ECO_OPPTS).concat(ZREF_TOX_TOXPROTOCOLS_TOX_OECD).concat(ZREF_TOX_TOXPROTOCOLS_TOX_OPPTS);
+/*END PHYSCHEM AND TOX*/
+
+/*START REG*/
+ZREF_REG_DOCYEAR_INFO = {inDD: "genVar", inOpt: "REG", outLabel: "Year or Notification or Exemption", outInfo: "Choose the Year of the Regulatory Document", outDD: "regDocYear"};
+ZREF_REG_DOCYEAR = ["Select Year|SELECT", "2022|2022", "2021|2021", "2020|2020", "2019|2019", "2018|2018", "2017|2017", "2016|2016", "2015|2015", "2014|2014", "2013|2013", "2012|2012", "2011|2011", "2010|2010", "2009|2009", "2008|2008", "2007|2007", "2006|2006", "2005|2005", "2004|2004", "2003|2003", "2002|2002", "2001|2001", "2000|2000", "Unknown|XXXX"];
+
+ZREF_REG_CONTINENT_INFO = {inDD: "genVar", inOpt: "REG", outLabel: "Continent of the Regulation", outInfo: "You can choose any continent to get to an international regulation", outDD: "reg"};
+ZREF_REG_CONTINENT = ["Select Region|SELECT", "Asia|REG_AS", "Pacific|REG_OC", "North America|REG_NA", "South America|REG_SA", "Europe|REG_EU", "Africa|REG_AF"];
+/*END REG*/
+
+/*START SSDS AND SUPPL QST*/
+ZSUP_SDSAM_AMCOUNTRIES_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Country", outInfo: "Choose the SDS Country", outDD: "sdsAm(SEARCH)"};
+ZSUP_SDSAM_AMCOUNTRIES = ["Select Country in the Americas|SELECT", "Anguilla|AI", "Antigua and Barbuda|AG", "Argentina|AR", "Aruba|AW", "Bahamas|BS", "Barbados|BB", "Belize|BZ", "Bermuda|BM", "Bolivia|BO", "Bonaire Sint Eustatius and Saba|BQ", "Brazil|BR", "Canada|CA", "Cayman Islands|KY", "Chile|CL", "Colombia|CO", "Costa Rica|CR", "Cuba|CU", "Curaçao|CW", "Dominican Republic|DO", "Dominica|DM", "Ecuador|EC", "El Salvador|SV", "Falkland Islands (Malvinas)|FK", "French Guiana|GF", "Greenland|GL", "Grenada|GD", "Guadeloupe|GP", "Guatemala|GT", "Guyana|GY", "Haiti|HT", "Honduras|HN", "Jamaica|JM", "Martinique|MQ", "Mexico|MX", "Montserrat|MS", "Nicaragua|NI", "Panama|PA", "Paraguay|PY", "Peru|PE", "Puerto Rico|PR", "Saint Barthélemy|BL", "Saint Kitts and Nevis|KN", "Saint Lucia|LC", "Saint Martin (French part)|MF", "Saint Pierre and Miquelon|PM", "Saint Vincent and the Grenadines|VC", "Sint Maarten (Dutch part)|SX", "Suriname|SR",
+"Trinidad and Tobago|TT", "Turks and Caicos Islands|TC", "United States|US", "Uruguay|UY", "Venezuela|VE", "Virgin Islands GB|VG", "Virgin Islands US|VI"];
+ZSUP_SDSAP_APCOUNTRIES_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Country", outInfo: "Choose the SDS Country", outDD: "sdsAP(SEARCH)"};
+ZSUP_SDSAP_APCOUNTRIES = ["Select Country in Asia or the Pacific|SELECT", "Afghanistan|AF", "American Samoa|AS", "Armenia|AM", "Australia|AU", "Azerbaijan|AZ", "Bahrain|BH", "Bangladesh|BD", "Bhutan|BT", "British Indian Ocean Territory|IO", "Brunei Darussalam|BN", "Cambodia|KH", "China|CN", "Christmas Island|CX", "Cocos (Keeling) Islands|CC", "Cook Islands|CK", "Cyprus|CY", "Democratic People's Republic of|KP", "Federated States of Micronesia|FM", "Fiji|FJ", "French Polynesia|PF", "Georgia|GE", "Guam|GU", "Hong Kong|HK", "India|IN", "Indonesia|ID", "Iran", "Iraq|IQ", "Islamic Republic of|IR", "Israel|IL", "Japan|JP", "Jordan|JO", "Kazakhstan|KZ", "Kiribati|KI", "Korea", "Korea", "Kuwait|KW", "Kyrgyzstan|KG", "Lao People's Democratic Republic|LA", "Lebanon|LB", "Macao|MO", "Malaysia|MY", "Maldives|MV", "Marshall Islands|MH", "Mongolia|MN", "Myanmar|MM", "Nauru|NR", "Nepal|NP", "New Caledonia|NC", "New Zealand|NZ",
+"Niue|NU", "Norfolk Island|NF", "Northern Mariana Islands|MP", "Occupied|PS", "Oman|OM", "Pakistan|PK", "Palau|PW", "Palestinian Territory", "Papua New Guinea|PG", "Philippines|PH", "Pitcairn|PN", "Province of China|TW", "Qatar|QA", "Republic of|KR", "Samoa|WS", "Saudi Arabia|SA", "Singapore|SG", "Solomon Islands|SB", "Sri Lanka|LK", "Syrian Arab Republic|SY", "Taiwan", "Tajikistan|TJ", "Thailand|TH", "Timor-Leste|TL", "Tokelau|TK", "Tonga|TO", "Turkmenistan|TM", "Tuvalu|TV", "United Arab Emirates|AE", "United States Minor Outlying Islands|UM", "Uzbekistan|UZ", "Vanuatu|VU", "Vietnam|VN", "Wallis and Futuna|WF", "Yemen|YE"];
+ZSUP_SDSEU_EUCOUNTRIES_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Country", outInfo: "Choose the SDS Country", outDD: "sdsEU(SEARCH)"};
+ZSUP_SDSEU_EUCOUNTRIES = ["Select Country in Europe or Africa|SELECT", "European Single Market|EU", "Aland Islands|AX", "Albania|AL", "Algeria|DZ", "Andorra|AD", "Angola|AO", "Austria|AT", "Belarus|BY", "Belgium|BE", "Benin|BJ", "Bosnia and Herzegovina|BA", "Botswana|BW", "Bulgaria|BG", "Burkina Faso|BF", "Burundi|BI", "Cameroon|CM", "Cape Verde|CV", "Central African Republic|CF", "Chad|TD", "Comoros|KM", "Congo|CD", "Congo|CG", "Croatia|HR", "Czech Republic|CZ", "Côte d'Ivoire|CI", "Denmark|DK", "Djibouti|DJ", "Egypt|EG", "Equatorial Guinea|GQ", "Eritrea|ER", "Estonia|EE", "Ethiopia|ET", "European Single Market|EU", "Faroe Islands|FO", "Finland|FI", "France|FR", "Gabon|GA", "Gambia|GM", "Germany|DE", "Ghana|GH", "Gibraltar|GI", "Greece|GR", "Guernsey|GG", "Guinea-Bissau|GW", "Guinea|GN", "Holy See (Vatican City State)|VA", "Hungary|HU", "Iceland|IS", "Ireland|IE", "Isle of Man|IM", "Italy|IT", "Jersey|JE", "Kenya|KE",
+"Latvia|LV", "Lesotho|LS", "Liberia|LR", "Libyan Arab Jamahiriya|LY", "Liechtenstein|LI", "Lithuania|LT", "Luxembourg|LU", "Madagascar|MG", "Malawi|MW", "Mali|ML", "Malta|MT", "Mauritania|MR", "Mauritius|MU", "Mayotte|YT", "Monaco|MC", "Montenegro|ME", "Morocco|MA", "Mozambique|MZ", "Namibia|NA", "Netherlands|NL", "Nigeria|NG", "Niger|NE", "Norway|NO", "Poland|PL", "Portugal|PT", "Republic of Moldova|MD", "Romania|RO", "Russian Federation|RU", "Rwanda|RW", "Réunion|RE", "Saint Helena|SH", "San Marino|SM", "Sao Tome and Principe|ST", "Select Country|SELECT", "Select Country|SELECT", "Senegal|SN", "Serbia|RS", "Seychelles|SC", "Sierra Leone|SL", "Slovakia|SK", "Slovenia|SI", "Somalia|SO", "South Africa|ZA", "South Sudan|SS", "Spain|ES", "Sudan|SD", "Svalbard and Jan Mayen|SJ", "Swaziland|SZ", "Sweden|SE", "Switzerland|CH", "Tanzania|TZ", "Togo|TG", "Tunisia|TN", "Turkey|TR", "Uganda|UG", "Ukraine|UA", "United Kingdom|GB",
+"Western Sahara|EH", "Zambia|ZM", "Zimbabwe|ZW", "the Former Yugoslav Republic of Macedonia|MK"];
+ZSUP_SDSAM_SDSLANG_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Language", outInfo: "Choose the Language of the SDS", outDD: "sdsLang"};
+ZSUP_SDSAP_SDSLANG_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Language", outInfo: "Choose the Language of the SDS", outDD: "sdsLang"};
+ZSUP_SDSEU_SDSLANG_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Language", outInfo: "Choose the Language of the SDS", outDD: "sdsLang"};
+ZSUP_SDSALL_SDSLANG = ["English|EN", "French|FR", "Portugese|PT", "Spanish|ES", "Other|OTHER"];
+ZSUP_SDSAM_SDSTYPE_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Normal or Extended", outInfo: "Choose the SDS Type", outDD: "sdsType"};
+ZSUP_SDSAP_SDSTYPE_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Normal or Extended", outInfo: "Choose the SDS Type", outDD: "sdsType"};
+ZSUP_SDSEU_SDSTYPE_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Normal or Extended", outInfo: "Choose the SDS Type", outDD: "sdsType"};
+ZSUP_SDSALL_SDSTYPE = ["Normal SDS|NSDS", "Extended SDS|ESDS"];
+ZSUP_SDSAM_SDSMAJORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Major Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMajor"};
+ZSUP_SDSAP_SDSMAJORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Major Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMajor"};
+ZSUP_SDSEU_SDSMAJORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Major Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMajor"};
+ZSUP_SDSALL_SDSMAJORCHANGE = ["Select SDS Major Change Number|SELECT", "1|1", "2|2", "3|3", "4|4", "5|5", "6|6", "7|7", "8|8", "9|9", "10|10", "11|11", "12|12", "13|13", "Unknown|X"];
+ZSUP_SDSAM_SDSMINORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Minor Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMinor"};
+ZSUP_SDSAP_SDSMINORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Minor Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMinor"};
+ZSUP_SDSEU_SDSMINORCHANGE_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Minor Change Number", outInfo: "Choose the SDS Major Change Number", outDD: "sdsMinor"};
+ZSUP_SDSALL_SDSMINORCHANGE = ["Select SDS Minor Change Number|SELECT", "1|1", "2|2", "3|3", "4|4", "5|5", "6|6", "7|7", "8|8", "9|9", "10|10", "11|11", "12|12", "13|13", "Unknown|X"];
+
+ZSUP_SDSAM_SDSREVYEAR_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Revision Year", outInfo: "Choose the SDS or Questionnaire Revision Year", outDD: "sdsYear"};
+ZSUP_SDSAP_SDSREVYEAR_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Revision Year", outInfo: "Choose the SDS or Questionnaire Revision Year", outDD: "sdsYear"};
+ZSUP_SDSEU_SDSREVYEAR_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Revision Year", outInfo: "Choose the SDS or Questionnaire Revision Year", outDD: "sdsYear"};
+ZSUP_QST_SDSREVYEAR_INFO = {inDD: "genVar", inOpt: "QST", outLabel: "Revision Year", outInfo: "Choose the SDS or Questionnaire Revision Year", outDD: "sdsYear"};
+ZSUP_SDSALL_SDSREVYEAR = ["Select Year|SELECT", "2022|2022", "2021|2021", "2020|2020", "2019|2019", "2018|2018", "2017|2017", "2016|2016", "2015|2015", "2014|2014", "2013|2013", "2012|2012", "2011|2011", "2010|2010", "2009|2009", "2008|2008", "2007|2007", "2006|2006", "2005|2005", "2004|2004", "2003|2003", "2002|2002", "2001|2001", "2000|2000", "Unknown|XXXX"];
+ZSUP_SDSAM_SDSREVMONTH_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Revision Month", outInfo: "Choose the SDS or Questionnaire Revision Month", outDD: "sdsMonth"};
+ZSUP_SDSAP_SDSREVMONTH_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Revision Month", outInfo: "Choose the SDS or Questionnaire Revision Month", outDD: "sdsMonth"};
+ZSUP_SDSEU_SDSREVMONTH_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Revision Month", outInfo: "Choose the SDS or Questionnaire Revision Month", outDD: "sdsMonth"};
+ZSUP_QST_SDSREVMONTH_INFO = {inDD: "genVar", inOpt: "QST", outLabel: "Revision Month", outInfo: "Choose the SDS or Questionnaire Revision Month", outDD: "sdsMonth"};
+ZSUP_SDSALL_SDSREVMONTH = ["Select Month|SELECT", "01 - January|01", "02 - February|02", "03 - March|03", "04 - April|04", "05 - May|05", "06 - June|06", "07 - July|07", "08 - August|08", "09 - September|09", "10 - October|10", "11 - November|11", "12 - December|12", "Unknown|XX"];
+ZSUP_SDSAM_SDSREVDAY_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Revision Day", outInfo: "Choose the SDS or Questionnaire Revision Day", outDD: "sdsDay"};
+ZSUP_SDSAP_SDSREVDAY_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Revision Day", outInfo: "Choose the SDS or Questionnaire Revision Day", outDD: "sdsDay"};
+ZSUP_SDSEU_SDSREVDAY_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Revision Day", outInfo: "Choose the SDS or Questionnaire Revision Day", outDD: "sdsDay"};
+ZSUP_QST_SDSREVDAY_INFO = {inDD: "genVar", inOpt: "QST", outLabel: "Revision Day", outInfo: "Choose the SDS or Questionnaire Revision Day", outDD: "sdsDay"};
+ZSUP_SDSALL_SDSREVDAY = ["Select Day|SELECT", "01|01", "02|02", "03|03", "04|04", "05|05", "06|06", "07|07", "08|08", "09|09", "10|10", "11|11", "12|12", "13|13", "14|14", "15|15", "16|16", "17|17", "18|18", "19|19", "20|20", "21|21", "22|22", "23|23", "24|24", "25|25", "26|26", "27|27", "28|28", "29|29", "30|30", "31|31", "Unknown|XX"];
+ZSUP_SDSAM_SDSSUPPLIER_INFO = {inDD: "genVar", inOpt: "SDSAM", outLabel: "Supplying Company Name", outInfo: "Choose the Supplying Company Name", outDD: "sdsSupplier(SEARCH)"};
+ZSUP_SDSAP_SDSSUPPLIER_INFO = {inDD: "genVar", inOpt: "SDSAP", outLabel: "Supplying Company Name", outInfo: "Choose the Supplying Company Name", outDD: "sdsSupplier(SEARCH)"};
+ZSUP_SDSEU_SDSSUPPLIER_INFO = {inDD: "genVar", inOpt: "SDSEU", outLabel: "Supplying Company Name", outInfo: "Choose the Supplying Company Name", outDD: "sdsSupplier(SEARCH)"};
+ZSUP_QST_SDSSUPPLIER_INFO = {inDD: "genVar", inOpt: "QST", outLabel: "Supplying Company", outInfo: "Choose the Supplying Company Name", outDD: "sdsSupplier"};
+ZSUP_SDSALL_SDSSUPPLIER = ["Select Company|SELECT", "ACETO|ACETO", "ADITYA BIRLA|ADITYABIRLA", "AIR LIQUIDE|AIRLIQUIDE", "AIR PRODUCTS|AIRPRODUCTS", "AKZO NOBEL|AKZONOBEL", "ARCH|ARCH", "ARCHROMA|ARCHROMA", "ARKEMA|ARKEMA", "ASAHI KASEI|ASAHIKASEI", "ASHLAND|ASHLAND", "AZELIS|AZELIS", "BASF|BASF", "BAYER|BAYER", "BOREALIS|BOREALIS", "BRASKEM|BRASKEM", "BRENNTAG|BRENNTAG", "CELANESE|CELANESE", "CHEVRON PHILLIPS|CHEVRONPHILLIPS", "CIBA|CIBA", "CLARIANT|CLARIANT", "COGNIS|COGNIS", "COVESTRO|COVESTRO", "CRODA|CRODA", "CROMPTON|CROMPTON", "CYTEC|CYTEC", "DIC|DIC", "DIXIE|DIXIE", "DOW|DOW", "DSM|DSM", "DUPONT|DUPONT", "EASTMAN|EASTMAN", "ESTRON|ESTRON", "EVONIK|EVONIK", "EXXONMOBIL|EXXONMOBIL", "FERRO|FERRO", "FORMOSA|FORMOSA", "HANWHA|HANWHA", "HEXION|HEXION", "HOBUM OLEO|HOBUMOLEO", "IMERYS|IMERYS", "INDORAMA|INDORAMA", "INEOS|INEOS", "INGEVITY|INGEVITY", "INNOSPEC|INNOSPEC", "ITOCHU|ITOCHU",
+"JOHNSON MATTHEY|JOHNSONMATTHEY", "KRONOS|KRONOS", "KUKDO|KUKDO", "LANXESS|LANXESS", "LG CHEM|LGCHEM", "LINDE|LINDE", "LONZA|LONZA", "LOTTE|LOTTE", "LYONDELLBASELL|LYONDELLBASELL", "MILLIKEN|MILLIKEN", "MITSUBISHI|MITSUBISHI", "MITSUI|MITSUI", "MOMENTIVE|MOMENTIVE", "MOSAIC|MOSAIC", "NAN YA|NAN YA", "NOVOZYMES|NOVOZYMES", "NUTRIEN|NUTRIEN", "OXICHEM|OXICHEM", "PETROCHINA|PETROCHINA", "POLYNT|POLYNT", "PTT GLOBAL|PTTGLOBAL", "RELIANCE|RELIANCE", "RHODIA |RHODIA ", "SABIC|SABIC", "SACHEM|SACHEM", "SASOL|SASOL", "SHIN-ETSU|SHIN-ETSU", "SINOPEC|SINOPEC", "SOLVAY|SOLVAY", "SUMITOMO|SUMITOMO", "SUN|SUN", "SYNGENTA|SYNGENTA", "TORAY|TORAY", "TOSOH|TOSOH", "TOTAL|TOTAL", "UMICORE|UMICORE", "UNIVAR|UNIVAR", "VENATOR|VENATOR", "VWR|VWR", "WACKER|WACKER", "WANHUA|WANHUA", "WESTLAKE|WESTLAKE", "YARA|YARA"];
+/*END SSDS AND SUPPL QST*/
+
+/*START BPDS*/
+ZREF_BPDS_NPINEW_INFO = {inDD: "genVar", inOpt: "BPDS", outLabel: "New or Exisiting Product", outInfo: "Choose if this is the NPI which caused you create this REAL_SUB or if this BOM-CHANGE or Review of an existing Product", outDD: "npiNew"};
+ZREF_BPDS_NPINEW = ["Select New Pr or a Change/review of Existing Pr|SELECT", "New Product|NEW", "Existing Product|EXIST"]; 
+ZREF_BPDS_NPIYEAR_INFO = {inDD: "genVar", inOpt: "BPDS", outLabel: "Request Year", outInfo: "Choose the NPI Year", outDD: "npiYear(SEARCH)"};
+ZREF_BPDS_NPIYEAR = ["Select Year|SELECT", "2022|2022", "2021|2021", "2020|2020", "2019|2019", "2018|2018", "2017|2017", "2016|2016", "2015|2015", "2014|2014", "2013|2013", "2012|2012", "2011|2011", "2010|2010", "2009|2009", "2008|2008", "2007|2007", "2006|2006", "2005|2005", "2004|2004", "2003|2003", "2002|2002", "2001|2001", "2000|2000", "Unknown|XXXX"];
+ZREF_BPDS_NPIMONTH_INFO = {inDD: "genVar", inOpt: "BPDS", outLabel: "Request Month", outInfo: "Choose the NPI Month", outDD: "npiMonth"};
+ZREF_BPDS_NPIMONTH =["Select Month|SELECT", "01 - January|01", "02 - February|02", "03 - March|03", "04 - April|04", "05 - May|05", "06 - June|06", "07 - July|07", "08 - August|08", "09 - September|09", "10 - October|10", "11 - November|11", "12 - December|12", "Unknown|XX"];
+ZREF_BPDS_NPIDAY_INFO = {inDD: "genVar", inOpt: "BPDS", outLabel: "Request Day", outInfo: "Choose the NPI Day", outDD: "npiDay"};
+ZREF_BPDS_NPIDAY = ["Select Day|SELECT", "01|01", "02|02", "03|03", "04|04", "05|05", "06|06", "07|07", "08|08", "09|09", "10|10", "11|11", "12|12", "13|13", "14|14", "15|15", "16|16", "17|17", "18|18", "19|19", "20|20", "21|21", "22|22", "23|23", "24|24", "25|25", "26|26", "27|27", "28|28", "29|29", "30|30", "31|31", "Unknown|XX"];
+ZREF_BPDS_NPIREQUESTOR_INFO = {inDD: "genVar", inOpt: "BPDS", outLabel: "Requestor", outInfo: "Choose the Requestor or Business Contact for the NPI", outDD: "npiRequestor"};
+ZREF_BPDS_NPIREQUESTOR = ["Select H-number|SELECT", "ADAM KUHL (H104462)|H104462", "AFZAN MOHD SALUD (H108437)|H108437", "AKIYOSHI ASAHINA (H129095)|H129095", "ALAIN VAN DEN BROECK (AVDBROEC)|AVDBROEC", "ALAIN VERBRUGGEN (AVERBRUG)|AVERBRUG", "ALEJANDRO URQUIETA (H105311)|H105311", "AMARYLLIS VAN GANSBEKE (H55576)|H55576", "AMOL SAWANT (H104625)|H104625", "AMY LI (H77123)|H77123", "ANDREAS FUCHS (H09466)|H09466", "ANIKET MAHADIK (H127463)|H127463", "ANN REYNDERS (H04818)|H04818", "ANNE CRET-WRIGHT (H62698)|H62698", "ANNIE FONG (H130993)|H130993", "ANNIE KE (H60128)|H60128", "ARIN KIM (H116873)|H116873", "ASHWINI GAWALI (H128862)|H128862", "ASIF BABAR (I000189)|I000189", "ATHIRA NAIR (H127474)|H127474", "ATUL SONAWANE (H134614)|H134614", "BARB MYLES (H133467)|H133467", "BART DEVROEY (BDEVROEY)|BDEVROEY", "BEAU WHEELESS (BWHEELES)|BWHEELES", "BERT RENIRIE (BRENIRIE)|BRENIRIE",
+"BETH CARRUTHERS (H136578)|H136578", "BITTU BARIYA (H131510)|H131510", "BRIDGET BROOKS (H120246)|H120246", "BRIGITTE KAMPA (H30502)|H30502",
+"BRIJESH H PATEL (H90977)|H90977", "BRUNO JANSSENS (BJANSSE1)|BJANSSE1", "BUNGA ANNISA (H117813)|H117813", "CARINA SCHLARMANN (CSCHLARM)|CSCHLARM", "CAROLIN WEIGL (H92938)|H92938", "CAROLINA VILARDY (H132745)|H132745", "CATHERINE BARON (H09574)|H09574", "CATHERINE BOLLAERT (H01458)|H01458", "CATHY GUO (H06503)|H06503", "CELIA WOO (H94908)|H94908", "CHARUWAN MAIDEE (H77567)|H77567", "CHETAN CHAVAN (H124848)|H124848", "CHETAN P GAIDHANI (H126982)|H126982", "CHRISTIAN BUECHELE (H50278)|H50278", "CHRISTINE JACOB (H81626)|H81626", "CHRISTOPHE PONCE (H48177)|H48177", "CORNELIA SCHOLZ (H66435)|H66435", "COURTNEY LEVY (I000040)|I000040", "COURTNEY TASSIN (H127274)|H127274", "CRAIG MOODY (H136822)|H136822", "CURTIS ELSIK (H13106)|H13106", "DAISY VERBELEN (H73778)|H73778", "DANDAN YE (H137252)|H137252", "DEREKE TSAO (H31890)|H31890", "DIEBLER JOHANNES (H132455)|H132455",
+"DIRK BRUYNINCKX (H03704)|H03704", "DONNA NEWHOUSE (H94922)|H94922", "EDELTRAUD SCHIDEK (H12187)|H12187", "EDGAR J OROZCO (H101230)|H101230",
+"ELDON SMITH (H128534)|H128534", "ELIANA YOCHIDA (EYOCHIDA)|EYOCHIDA", "ELS WEEG (I000155)|I000155", "EMMANUEL FAUSTER (H57348)|H57348", "FABRICE CAMPUS (H24097)|H24097", "FLAVIA KNOP (H131841)|H131841", "FRANCISCO JAVIER FERNANDEZ (H79975)|H79975", "FRANK BERTENS (H87344)|H87344", "FREDERICK ICASA (FICASA)|FICASA", "GARY PEREZ (GPEREZ)|GPEREZ", "GEORG ROENTGEN (H05951)|H05951", "GEORGE GUO (H107478)|H107478", "GRIET MEYEN (H133432)|H133432", "GUDRUN SCHUEPFERLING (H72559)|H72559", "HADI RAZZAK (HRAZZAK)|HRAZZAK", "HARSHA DOSHI (H129158)|H129158", "HECTOR CANTERO (H45476)|H45476", "HEIDI VANROSSOM (H135308)|H135308", "HERMAN MOUREAU (H63639)|H63639", "HILDE HERMANS (H101065)|H101065", "HINDURAO CHOPADE (H127746)|H127746", "HOLZAPFEL MARTIN (H104385)|H104385", "INES EMMINGER (H88879)|H88879", "INGRID LENOTTE (H24663)|H24663", "IRNA BUSTAMAN (H130133)|H130133",
+"IRVING YANG (H127654)|H127654", "ISABELLA RETTENBACHER (H68165)|H68165", "IVAN METTIER (H21696)|H21696", "JAMES HERRICK (H136706)|H136706",
+"JAMIE MCCRANIE (H130131)|H130131", "JAN MICHIELS (H83727)|H83727", "JASMINE SC LEE (JLEE)|JLEE", "JAYNE CLIFTON (H71937)|H71937", "JEAN-FRANCOIS DELESALLE (JDELESAL)|JDELESAL", "JEFF KONIECZYNSKI (H01599)|H01599", "JENNY CRITTELL (H127629)|H127629", "JESSICA JY ZHANG (H103320)|H103320", "JESSICA ZHANG (H102003)|H102003", "JILL LEGADOS RONDON (H108478)|H108478", "JOHN XU (JXU1)|JXU1", "JORIS PITTEVILS (H62287)|H62287", "JOS DE WAAL (H124620)|H124620", "JUERGEN KUECHELBACHER (H58521)|H58521", "JUERGEN UHL (H95440)|H95440", "KABITA SAPKOTA (H122873)|H122873", "KARTHIKNARAYANAN SUNDARRAJAN (H124687)|H124687",
+"KATSUTOSHI HIGASHI (H19971)|H19971", "KEN ONG (KONG)|KONG", "KENNY YANG (H31107)|H31107", "KEVIN A BUCK (H43024)|H43024", "KEVIN DOHERTY (H65631)|H65631", "KEVIN DRAKE (H130559)|H130559", "KIM VAN DOORSSELAERE (H11614)|H11614", "KIRK BEILMAN (H133713)|H133713", "KLAUS HOFFMANN (H13950)|H13950", "KRISH GOPALAN (KGOPALA)|KGOPALA", "LAURENT CHOUVET (H89333)|H89333", "LESSIE CANO KOLLMUSS (H129700)|H129700", "LEYLA GUNES (H130987)|H130987", "LILI HE (H79781)|H79781", "LING SIN NG (H115073)|H115073", "LISA ELLIS (H134581)|H134581", "LISA FRIESE (H106722)|H106722", "LORNA METCALFE (H127994)|H127994", "LUC SCHOUTERDEN (LSCHOUTE)|LSCHOUTE", "LYNNE ORESCHNIGG (H46106)|H46106", "M VEDA DEEPIKA NAIDU (H129221)|H129221", "MADHURA PAWAR (H124959)|H124959", "MAHESH TIKKAVARAPU (H124594)|H124594", "MAKIKO OKITA (H59489)|H59489", "MALINI SETHURAMAN (H09586)|H09586",
+"MARC BRANDERS (H122559)|H122559", "MARGARET ROCCAFORTE (H107602)|H107602", "MARIA IOANNA ALMPERTI (H118121)|H118121",
+"MARIANNE WALRAVENS (H36714)|H36714", "MARIJKE SIX (MSIX)|MSIX", "MARITZA MENDOZA (H62838)|H62838", "MARK WHITEHOUSE (H108842)|H108842", "MARKUS ALBRECHT (H96895)|H96895", "MARTINA KLARIC (H135488)|H135488", "MARTINE LEDOUX (MLEDOUX)|MLEDOUX", "MARVIN BAHNSEN (H129751)|H129751", "MATTHEW AUSTIN (H10202)|H10202", "MATTHEW FREEMAN (H135684)|H135684", "MATTHIAS KRESSE (H102029)|H102029", "MAY SONG (H131077)|H131077", "MEG GOLDSMITH (H132706)|H132706", "MELANIE HENNINGS (H127841)|H127841", "MICHAEL KROLL (H130257)|H130257", "MICHAEL NOHL (MNOHL)|MNOHL", "MICHELLE CHEN (H93816)|H93816", "MIKE KERRIGAN (MKERRIGA)|MKERRIGA", "MIREILLE DE WITTE (H58836)|H58836", "MOHAMED FAIZ MOHAMED SALLEH (H116808)|H116808", "MONTREE NAKNOON (H26410)|H26410", "MRUNMAYEE KALE (H135835)|H135835", "MUHAMAD YUSNEN (H131052)|H131052", "MURALI NARASAPURAM (H15681)|H15681",
+"NADATA GREEN (H52796)|H52796", "NADIA ZULKIFLI (H108435)|H108435", "NADJA RICHTER (H21496)|H21496", "NANCY MA (H136674)|H136674",
+"NATASJA GLORIE (H121409)|H121409", "NATHALIE DETAIN (H05431)|H05431", "NATHALIE SCHRAEPEN (H130424)|H130424", "NATHAN IRBY (H128632)|H128632", "NICK XIAO (H04551)|H04551", "OLIVER RAUCH (H124834)|H124834", "PABLO CANCELA (PCANCELA)|PCANCELA", "PAUL HENFREY (H121099)|H121099", "PETER HELLMUTH (H128951)|H128951", "PRACHI JOSHI (H127642)|H127642", "PRASAD KADAM (H124849)|H124849", "PRATEIK JOSHI (H136044)|H136044", "PRINCY JINS (H124416)|H124416", "PRISCILLA ZHANG (H53004)|H53004", "QINGWEI ZHANG (H120384)|H120384", "RALF PETERMANN (H62966)|H62966", "REGINA SCHULZ (H11382)|H11382", "RENA LI (H122807)|H122807", "RESHMA BUDHWANI (H127987)|H127987", "REX QIAN (RQIAN)|RQIAN", "RHONDA JUSTICE (H133027)|H133027", "RICHARD BATY (H94912)|H94912", "ROBERT FARRIS (H124912)|H124912", "ROBERT OLSON (H82163)|H82163", "ROEL VAN BOXEL (H72211)|H72211", "ROHIT KAMBLE (H127958)|H127958",
+"ROLF MOORS (H72913)|H72913", "RONALD KEICHLINE (H31302)|H31302", "RUAN YAN (H20815)|H20815", "RUBENS FILHO (H78198)|H78198",
+"SABINE BREDENKOETTER (H27988)|H27988", "SABINE PAQUET (H103477)|H103477", "SADANAND MUSHIGERI (H101862)|H101862", "SANLY SHENG (H90220)|H90220", "SARAH HOLGUIN (H129183)|H129183", "SARI LONGIN (H37621)|H37621", "SASHI KIRAN (H117741)|H117741", "SATISH DASARWAR (H124348)|H124348", "SEMSETTIN GURBUZ (H07063)|H07063", "SHALAKA DEB (H135816)|H135816", "SHELLY BRAVARD (H137000)|H137000", "SHREYA HALDE (H129351)|H129351", "SIMONE QUATTRONE (H107056)|H107056", "SNEHA S DEOGHARKAR (H124153)|H124153", "SONALI TETGURE (H136243)|H136243", "SOPHIE COLLIARD (H32789)|H32789", "SOPHIE DIETSCH (H30247)|H30247", "SRINU ANUMALA (H120542)|H120542", "STEVE CORNET (H66148)|H66148", "STEVEN FUCHS (H108556)|H108556", "STEVENS NAUD (H117105)|H117105", "STIJN ROEKAERTS (H77346)|H77346", "SUBBU SUBRAMANIAN (H47518)|H47518", "SUDHARSHAN HARI PRASAD (H124709)|H124709",
+"SUJATA PAWAR (H132521)|H132521", "SUMIT PAWAR (H129199)|H129199", "SURAJIT GHOSH (SGHOSH)|SGHOSH", "SURIYA LAKANAKARN (H27595)|H27595",
+"SUSAN LUTAN-WIDIARTO (H44433)|H44433", "SWETA PATKAR (H136018)|H136018", "TABETHA ALTENBURG (H130282)|H130282", "TAREKH F SHAIKH (H122128)|H122128", "TERESA SALAIZ (I000154)|I000154", "THOMAS FAUSTER (H103057)|H103057", "THOMAS JONCHERAY (H99197)|H99197", "THOMAS OTTEN (H10404)|H10404", "TIFFANY PISCHEL (TPOWELL)|TPOWELL", "TINA HAMBLIN (TFISCHER)|TFISCHER", "TRISTAN SENEGAL (I000160)|I000160", "TSCHIDA GUENTHER (H54567)|H54567", "TUSHAR VAITY (H97124)|H97124", "UTTAM D NAVGHANE (H124811)|H124811", "VEENA BALAN (H135834)|H135834", "VEERLE MOONS (H86122)|H86122", "VIKAS B MANKUMARE (H122029)|H122029", "WALTER DUEMLER (H31102)|H31102", "WAN AFIFI ZAWAWIE WAN ZAKARIA (H132000)|H132000", "WIM VAN HOEYMISSEN (H94251)|H94251", "WINNIE HAN (H101117)|H101117", "XU HUANG (H131439)|H131439", "YEN-LOAN NGUYEN (H45506)|H45506", "YIN LAI CHOW (YLCHOW)|YLCHOW",
+"YONG ZHANG (H131816)|H131816", "YVES PAPIRER (H76649)|H76649", "YVONNE TANG (H92693)|H92693",
+"ZACHARY MIKAN (H124147)|H124147"];
+/*END BPDS*/
+
+/*START COMP*/
+ZREF_COMP_COMPCHREASON_INFO = {inDD: "genVar", inOpt: "COMP", outLabel: "Reason for Comp Change", outInfo: "Choose the Reason for this Composition Change", outDD: "compChReason"};
+ZREF_COMP_COMPCHREASON = ["Select Reason for Comp Change|SELECT", "Change in Data Setup|SETUP", "Data Issue (NPI/BOM-Change Process Failed)|FAIL"] 
+ZREF_COMP_COMPCHTYPE_INFO = {inDD: "genVar", inOpt: "COMP", outLabel: "Type of Comp Change", outInfo: "Choose the Type of Composition Change", outDD: "compChType"};
+ZREF_COMP_COMPCHTYPE = ["Select Nature of Comp Change|SELECT", "Full Review|FULLREV", "Replacing One Component|REPLACE", "Adding Component|ADD", "Removing Component|REMOVE", "Component Category Change|COMPCAT", "Concentration Change|CONC"];
+ZREF_COMP_COMPCHVAT_INFO = {inDD: "genVar", inOpt: "COMP", outLabel: "Composition VAT", outInfo: "Choose the Composition's Value Assignment Tab", outDD: "compChVat"};
+ZREF_COMP_COMPCHVAT = ["Select Composition|SELECT", "ECBSM|ECBSM", "ECBP (post reaction change only)|ECBP", "Legal Compositon|LC"];
+/*END COMP*/
+
+/*START END-USE*/
+ZREF_ENDU_APPLAREA_INFO = {inDD: "genVar", inOpt: "ENDU", outLabel: "Application Area of Regulation", outInfo: "Choose the Application Area of the Regulation", outDD: "applArea"};
+ZREF_ENDU_APPLAREA = ["Select End-Use|SELECT", "Not Applicable|NONE", "Aerospace|AERO", "Agrochemicals|AGRO", "Automotive|AUTO", "Biocide|BIOC", "Cosmetics|COSM", "Coatings|COAT", "Drinking Water|DRIN", "Food Contact|FOOD", "Medical Device|MEDI", "Pharmaceutical|PHAR", "Paint|PAIN", "Textiles|TEXT", "Toys|TOYS"];
+ZREF_ENDU_CONTINENT_INFO = {inDD: "genVar", inOpt: "ENDU", outLabel: "Continent of the Regulation", outInfo: "You can choose any continent to get to an international regulation", outDD: "endU"};
+ZREF_ENDU_CONTINENT = ["Select Region|SELECT", "Asia|REG_AS", "Pacific|REG_OC", "North America|REG_NA", "South America|REG_SA", "Europe|REG_EU", "Africa|REG_AF"];
+/*END END-USE*/
+
+/*START PCN*/
+ZREF_PCN_PCNNEW_INFO = {inDD: "genVar", inOpt: "PCN", outLabel: "First Registrion of REAL_SUB", outInfo: "Choose if this is the first time you Register the Product", outDD: "pcnNew"};
+ZREF_PCN_PCNNEW = ["Select New Pr or a Change/review of Existing Pr|SELECT", "New Product Registration|NEW", "Renewing Exisitng Product Registration|EXIST"]; 
+ZREF_PCN_PCNYEAR_INFO = {inDD: "genVar", inOpt: "PCN", outLabel: "Registration Year", outInfo: "Choose the PCN Year", outDD: "pcnYear"};
+ZREF_PCN_PCNYEAR = ["Select Year|SELECT", "2022|2022", "2021|2021", "2020|2020", "2019|2019", "2018|2018", "2017|2017", "2016|2016", "2015|2015", "2014|2014", "2013|2013", "2012|2012", "2011|2011", "2010|2010", "2009|2009", "2008|2008", "2007|2007", "2006|2006", "2005|2005", "2004|2004", "2003|2003", "2002|2002", "2001|2001", "2000|2000", "Unknown|XXXX"];
+ZREF_PCN_PCNMONTH_INFO = {inDD: "genVar", inOpt: "PCN", outLabel: "Registration Month", outInfo: "Choose the PCN Month", outDD: "pcnMonth"};
+ZREF_PCN_PCNMONTH =["Select Month|SELECT", "01 - January|01", "02 - February|02", "03 - March|03", "04 - April|04", "05 - May|05", "06 - June|06", "07 - July|07", "08 - August|08", "09 - September|09", "10 - October|10", "11 - November|11", "12 - December|12", "Unknown|XX"];
+ZREF_PCN_PCNDAY_INFO = {inDD: "genVar", inOpt: "PCN", outLabel: "Registration Day", outInfo: "Choose the PCN Day", outDD: "pcnDay"};
+ZREF_PCN_PCNDAY = ["Select Day|SELECT", "01|01", "02|02", "03|03", "04|04", "05|05", "06|06", "07|07", "08|08", "09|09", "10|10", "11|11", "12|12", "13|13", "14|14", "15|15", "16|16", "17|17", "18|18", "19|19", "20|20", "21|21", "22|22", "23|23", "24|24", "25|25", "26|26", "27|27", "28|28", "29|29", "30|30", "31|31", "Unknown|XX"];
+ZREF_PCN_PCNCOUNTRIES_INFO = {inDD: "genVar", inOpt: "PCN", outLabel: "Product Registration", outInfo: "Choose the Country or Region of the Product Registration", outDD: "pcnCountries"};
+ZREF_PCN_PCNCOUNTRIES = ["Select Region/Country|SELECT", "European Single Market (UFI)|EU", "Aland Islands|AX", "Albania|AL", "Andorra|AD", "Austria|AT", "Belarus|BY", "Belgium|BE", "Bosnia and Herzegovina|BA", "Bulgaria|BG", "Croatia|HR", "Czech Republic|CZ", "Denmark|DK", "Estonia|EE", "Faroe Islands|FO", "Finland|FI", "France|FR", "Germany|DE", "Gibraltar|GI", "Greece|GR", "Guernsey|GG", "Holy See (Vatican City State)|VA", "Hungary|HU", "Iceland|IS", "Ireland|IE", "Isle of Man|IM", "Italy|IT", "Jersey|JE", "Latvia|LV", "Liechtenstein|LI", "Lithuania|LT", "Luxembourg|LU", "the Former Yugoslav Republic of Macedonia|MK", "Malta|MT", "Republic of Moldova|MD", "Monaco|MC", "Montenegro|ME", "Netherlands|NL", "Norway|NO", "Poland|PL", "Portugal|PT", "Romania|RO", "Russian Federation|RU", "San Marino|SM", "Serbia|RS", "Slovakia|SK", "Slovenia|SI", "Spain|ES",
+"Svalbard and Jan Mayen|SJ", "Sweden|SE", "Switzerland|CH", "Turkey|TR", "Ukraine|UA", "United Kingdom|GB"];
+/*END PCN*/
+
+/*END REAL DATA*/
+
+function hideMenus(){
+    replaceStyle("menuStyle", "menuStyleNoDisplay");
+}
+
+function replaceStyle(beforeStyle, afterStyle){
+    var menuClassElements = document.getElementsByClassName(beforeStyle);
+    for(var i = 0; i < menuClassElements.length; i++){
+        var menuClassElementX = menuClassElements.item(i);
+        menuClassElementX.title = "";
+        menuClassElementX.className = afterStyle;
+    }
+}
+
+function makeMenu(){
+    if(this.inDD == "None" || this.inOpt == "None" || document.getElementById(this.inDD).value == this.inOpt){
+        var toBeDisplayedDiv = document.getElementById(this.outDD + "Div");
+        toBeDisplayedDiv.className = "menuStyle";
+        var toBePopLabel = document.getElementById(this.outDD + "Label");
+        toBePopLabel.innerHTML = this.outLabel + ": ";
+        toBePopLabel.for = this.outDD;
+        toBePopLabel.title = this.outInfo;
+        var toBePopDD = document.getElementById(this.outDD);
+        toBePopDD.title = this.outInfo;
+        toBePopDD.innerHTML = "";
+        for (var i = 0; i < arguments.length; i++) {
+		    var textAndValue = arguments[i];
+		    var addedOption = document.createElement("option");
+		    var parsedArray = textAndValue.split('|');
+            addedOption.text = parsedArray[0];
+            addedOption.value = parsedArray[1];
+            toBePopDD.appendChild(addedOption);
+        }
+    }
+	else{
+	}
+}
+
+function creatMenuLabelSelectandSpan(){
+    for (var i = 0; i < arguments.length; i++) {
+        Name = arguments[i];
+        if(Name.search("(SEARCH)")==-1){
+            var innerDiv = document.createElement("div");
+            innerDiv.id = Name + "Div";
+            innerDiv.className = "menuStyleNoDisplay";
+            var innerDivLabel = document.createElement("label");
+            innerDivLabel.id = Name + "Label";
+            innerDivLabel.htmlFor = Name;
+            innerDiv.appendChild(innerDivLabel);
+            var innerDivSelect = document.createElement("select");
+            innerDivSelect.id = Name;
+            innerDiv.appendChild(innerDivSelect);
+            var innerDivSpan = document.createElement("span");
+            innerDivSpan.id = Name + "Span";
+            innerDiv.appendChild(innerDivSpan);
+            outerDiv = document.getElementById("menuBody");
+            outerDiv.appendChild(innerDiv);
+        }
+    else{
+            var innerDiv = document.createElement("div");
+            innerDiv.id = Name + "Div";
+            innerDiv.className = "menuStyleNoDisplay";
+            var innerDivLabel = document.createElement("label");
+            innerDivLabel.id = Name + "Label";
+            innerDivLabel.htmlFor = Name;
+            innerDiv.appendChild(innerDivLabel);
+            var innerDivDatalist = document.createElement("datalist");
+            innerDivDatalist.id = Name;
+            innerDiv.appendChild(innerDivDatalist);
+            var innerDivInput = document.createElement("input");
+            innerDivInput.id = Name + "Input";
+            innerDivInput.autoComplete = "on";
+            innerDivInput.setAttribute('list', Name);
+            innerDiv.appendChild(innerDivInput);
+            var innerDivSpan = document.createElement("span");
+            innerDivSpan.id = Name + "Span";
+            innerDiv.appendChild(innerDivSpan);
+            outerDiv = document.getElementById("menuBody");
+            outerDiv.appendChild(innerDiv);
+        }
+    }
+}
+
+function copydocNameToClipboard(){
+    var toBeCopiedDocumentName = document.getElementById("docName");
+    var toBeValidatedText = toBeCopiedDocumentName.value;
+    if(toBeValidatedText.search("SELECT")==-1){
+        toBeCopiedDocumentName.select();
+        document.execCommand("copy");
+    }
+    else{
+        alert("Cannot Copy! String Contains SELECT.");
+    }
+}
+
+function copyGenVarNameToClipboard(){
+    var toBeCopiedGenVarName = document.getElementById("genVarName");
+    var toBeValidatedText = toBeCopiedGenVarName.value;
+    if(toBeValidatedText.search("SELECT")==-1){
+        toBeCopiedGenVarName.select();
+        document.execCommand("copy");
+    }
+    else{
+        alert("Cannot Copy! String Contains SELECT.");
+    }
+}
+
+/*START OUTPUT FUNCTIONS*/
+
+function getV(SelectedId){
+    var gottenValue = "";
+    if(SelectedId.search("(SEARCH)")==-1){
+        var gottenValue = document.getElementById(SelectedId).value;
+    }
+    else{
+        var gottenValue = document.getElementById(SelectedId + "Input").value;
+        if (gottenValue==""){
+            gottenValue="SELECT"
+        }
+    }
+    return gottenValue;
+}
+
+function makeTwoStrings(){
+    var documentName = "";
+    var genVariantName = "";
+
+    switch(document.getElementById("genVar").value) {
+    case "OCC":
+        documentName = getV("occReason") + "|" + getV("occCountry(SEARCH)");
+        genVariantName = getV("occReason") + "|" + getV("occCountry(SEARCH)");
+        break;
+    case "PHYSC":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "TOX":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "REG":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "SDSAM":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "SDSAP":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "SDSEU":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "QST":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "BPDS":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "COMP":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "ENDU":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "PCN":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    case "OTHER":
+        documentName = "Will determine output stucture with Zack";
+        genVariantName = "Will determine output stucture with Zack";
+        break;
+    default:
+    // code block
+    }
+    document.getElementById("docName").value = documentName;
+    document.getElementById("genVarName").value = genVariantName;
+}
+/*END OUTPUT FUNCTIONS*/
+
+</script>
+</body>
+</html>

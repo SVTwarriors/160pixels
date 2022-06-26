@@ -1,0 +1,117 @@
+
+
+<html>
+  <head>
+  <style>
+    body {
+      background-color: #000000;
+    } 
+    .outerContainer {
+      display: grid;
+      grid-template-columns: 128px auto;
+      background-color: #FFA500;
+      border-radius:.30rem;
+   	  position:absolute;
+   	  bottom:0;
+      grid-gap: 10px;
+      padding: 10px;
+      width: 480px;
+    }
+    .innerContainerInput {
+      border-radius:.30rem;
+      justify-items: stretch;
+      height: 20%;
+      width: auto;
+      position: absolute;
+      text-align: right;
+   	  top: 10px;
+    }
+    .innerContainerOutput {
+      background-color: #FFA500;
+      border-radius:.30rem;
+      width: auto;
+      position: absolute;
+      height: 75%;
+   	  bottom: 10px;
+    }
+    .inputButton{
+      background-color: #b46810;
+      border-radius:.30rem;
+      border: 0px double #FFFFFF;
+      color: #FFFFFF;
+      font-size: 12;
+      text-align: center;
+      padding: 5px;
+    }
+    .inputId {
+      background-color: #000000;
+      border: 0px double #FFFFFF;
+      color: #FFFFFF;
+      font-size: 12;
+      text-align: left;
+      padding: 5px;
+    } 
+    .outputPara {
+      font-size: 12;
+      font-weight: bold;
+      text-align: left;
+      padding-left: 5px;
+      padding-right: 10px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="outerContainer">
+      <div>
+        <img id = "imageId" src="Assistant/Assistant0001.bmp">
+      </div>
+      <div>
+          <div class="innerContainerInput">
+            <input type="text" placeholder="Type " id="inputId" class="inputId">
+            <button type="button" class="inputButton" onclick="getInputValue();">Ask</button>
+          </div>
+          <div class="innerContainerOutput">
+            <p id="outputPara" class="outputPara">Evangeline: I am your assistant and will try my best to answer your questions. Perhaps you could ask me about ... ?</p>
+          </div>
+      </div>
+    </div>
+    <script>
+      const dictionaryArray = ["output", "box"];
+      getInputValue();
+      function getInputValue() {
+        definition = ["definition", "meaning", "define", "explain", "explanation", "mean by", "what is"];
+        parent = ["parent", "part of"];
+        child = ["child", "types of"];
+        synonym = ["synonym", "other word for"];
+        antonym = ["antonym"];
+        related = ["related"];
+        theme = ["theme"];
+        //const rawJson = '{"input": "input", "output": "output", "character": "character", "theme": "theme"}';
+        //const rawJson = '{"input": "input", "definition": "definition", "parent": "parent", "child": "child", "synonym": "synonym", "antonym": "antonym", "related": "related", "theme": "theme"}';
+	      //const rawJson = '{"input": "input", "quote": "quote", "author": "author", "theme": "theme"}';
+        const rawJson = '{"input": "input", "output": "output test output box output output output output output output output output output output output output output output output output output output output test output box output output output output output output output output output output output output output output output output output output output test output box output output output output output output output output output output output output output output output output output output output test output box output output output output output output output output output output output output output output output output output output", "expression": "expression"}';
+        const parsedJson = JSON.parse(rawJson); 
+	      let correctInput = parsedJson.input;
+        let rawOutputValue = parsedJson.output;
+        let outputValue = " " + rawOutputValue.substr(0, 550) + " ";
+        //let outputValue = " " + rawOutputValue + " "; 
+        let processedOutputValue;
+        for (let i = 0; i < dictionaryArray.length; i++){
+          let plainKeys = " " + dictionaryArray[i] + " ";
+          let underlinedKeys = " <u>" + dictionaryArray[i] + "</u> ";
+          processedOutputValue = outputValue.replaceAll(plainKeys, underlinedKeys);
+          outputValue = processedOutputValue
+        }
+        let inputValue = document.getElementById("inputId").value;
+          if (correctInput==inputValue){
+		        document.getElementById("outputPara").innerHTML = "Evangeline:" + processedOutputValue;
+        }
+        var randomNumber = Math.floor(Math.random() * 412) + 1;
+        var randomNumberString = randomNumber.toString();
+        while(randomNumberString.length < 4){ randomNumberString = "0" + randomNumberString; }
+        let randomImage = "Assistant/Assistant" +  randomNumberString + ".bmp";
+        document.getElementById("imageId").src = randomImage;
+      }
+    </script>
+  </body>
+</html>

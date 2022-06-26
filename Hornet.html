@@ -1,0 +1,347 @@
+<head>
+  	<meta charset="UTF-8">
+  	<meta name="description" id="metaDescript" content="A small website to solve/destroy New York Times' daily spelling bee puzzle by guessing word.">
+  	<meta name="keywords" id="metaKeys" content="NYT spelling bee, New York Times, Spelling Bee, javascript Hornet, word game, vocabulary, dictionary">
+	
+	<style>
+		h1{
+			text-decoration: underline;
+			font-size:40px;
+			text-align: center;
+		}
+		tableParagraph{
+			align: center;
+		}
+		table.honeyComb {
+			border: 1x solid black;
+			background: url(Hornet/HornetHoneyComb.bmp);
+			background-repeat: no-repeat;
+			background-size: 100%;
+			background-width: auto;
+			text-align: center;
+			margin-left:auto;
+			margin-right:auto;
+			width: 360px;
+			height: 360px;
+		}
+		
+		table.buttonsTable {
+			border: 1x solid black;
+			text-align: center;
+			margin-left:auto;
+			margin-right:auto;
+			width: 400px;
+		}
+		
+		table.outputs {
+			border: 1x solid black;
+			text-align: left;
+			margin-left:auto;
+			margin-right:auto;
+			width: 400px;
+		}
+		
+		input[type="text"] {
+			size: 5px;
+			font-size:40px;
+			text-align: center;
+			height:44px;
+			width:44px;
+		}
+		td.topInput {
+			vertical-align: bottom;
+		}
+		td.leftInputs {
+			text-align: right;
+		}
+		td.rightInputs {
+			text-align: left;
+		}
+		td.bottomInput {
+			vertical-align: top;
+		}
+		button.fetch {
+			background-image: none;
+			background-repeat: no-repeat;
+			background-size: 100px 100px;
+			text-align: center;
+			font-weight: bold;
+			height:100px;
+			width:100px;
+			background-color: #ffdb4d;
+			border: none;
+			color: black;
+			font-size: 16px;
+			border-radius: 10px;
+		}
+		button.verify {
+			text-align: center;
+			font-weight: bold;
+			height:100px;
+			width:100px;
+			background-color: #ffdb4d;
+			border: none;
+			color: black;
+			font-size: 16px;
+			border-radius: 10px;
+		}
+		button.define{
+			text-align: center;
+			font-weight: bold;
+			height:100px;
+			width:100px;
+			background-color: #ffdb4d;
+			border: none;
+			color: black;
+			font-size: 16px;
+			border-radius: 10px;
+		}
+		td.arrows {
+			text-align: center;
+			font-weight: bold;
+			font-size: 30px;
+		}
+		table.hornetPhotoTable {
+			margin-left:auto;
+			margin-right:auto;
+		}
+		img.hornetPhotoImage {
+			width: 360px;
+			height: auto;
+		}
+		p.listOfUnverifiedHits {
+			visibility: hidden;
+			font-size: 1px;
+		}
+	</style>
+</head>
+<body>
+
+<h1><img src=Hornet/HornetDeadBee.bmp>   The JSON Hornet   <img src=Hornet/HornetDeadBee.bmp></h1>
+<p class="tableParagraph">
+<table class="honeyComb">
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td>
+<td class="topInput">
+<input type="text" id="surroundingLetter1" size="1" maxlength="1" value="l">
+</td>
+<td></td><td></td><td></td></tr><tr><td></td>
+<td class="leftInputs">
+<input type="text" id="surroundingLetter2" size="1" maxlength="1" value="u">
+</td>
+<td></td><td></td><td></td>
+<td class="rightInputs">
+<input type="text" id="surroundingLetter3" size="1" maxlength="1" value="n">
+</td>
+<td></td></tr><tr><td></td><td></td><td></td>
+<td>
+<input type="text" id="centerLetter" size="1" maxlength="1" value="a">
+</td>
+<td></td><td></td><td></td></tr><tr><td></td>
+<td class="leftInputs">
+<input type="text" id="surroundingLetter4" size="1" maxlength="1" value="c">
+</td>
+<td></td><td></td><td></td>
+<td class="rightInputs">
+<input type="text" id="surroundingLetter5" size="1" maxlength="1" value="i">
+</td>
+<td></td></tr><tr><td></td><td></td><td></td>
+<td class="bottomInput">
+<input type="text" id="surroundingLetter6" size="1" maxlength="1" value="f">
+</td>
+<td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<br>
+<br>
+
+<table class="buttonsTable">
+	<tr>
+		<td>
+			<button onclick="repeatGetWords();" id="fetch" class="fetch">Fetch Words</button>
+		</td>
+		<td class="arrows">
+			&#9654;
+		</td>
+		<td>
+			<button onclick="filter();" id="verify" class="verify">Verify Words</button>
+		</td>
+		<td class="arrows">
+			&#9654;
+		</td>
+		<td>
+			<button onclick="getDefinitions();" id="define" class="define">Get Definitions</button>
+		</td>
+	</tr>
+</table>
+</p>
+
+<table class="outputs">
+	<tr>
+		<td>
+			<p id="listOfVerifiedHits" class="listOfVerifiedHits"></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p id="listOfDefinitions" class="listOfDefinitions"></p>
+		</td>
+	</tr>
+<table>	
+
+<br>	
+
+<table class="hornetPhotoTable">
+	<tr>
+		<td>
+			<img src="Hornet/Hornet1.bmp" id="hornetPhotoImage" class="hornetPhotoImage">
+		</td>
+	</tr>
+</table>
+
+<p id="listOfUnverifiedHits" class="listOfUnverifiedHits">
+</p>
+
+	
+<script>
+	
+	var randomPictureNumber = Math.round(17* Math.random() + 1);
+	var randomPictureSource = "Hornet/Hornet" + randomPictureNumber + ".bmp";
+	document.getElementById('hornetPhotoImage').src = randomPictureSource;
+	
+	var centerLetter;
+	var surroundingLetter1;
+	var surroundingLetter2;
+	var surroundingLetter3;
+	var surroundingLetter4;
+	var surroundingLetter5;
+	var surroundingLetter6;
+	const api_url = 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/';
+    const api_key = '?key=216daded-6ffb-44d2-8ff6-e152d39650d8';
+	
+	var approvedArray;
+	var definitionArray;
+			
+	async function getWords() {
+		centerLetter = document.getElementById('centerLetter').value;
+		surroundingLetter1 = document.getElementById('surroundingLetter1').value.toLowerCase();
+		surroundingLetter2 = document.getElementById('surroundingLetter2').value.toLowerCase();
+		surroundingLetter3 = document.getElementById('surroundingLetter3').value.toLowerCase();
+		surroundingLetter4 = document.getElementById('surroundingLetter4').value.toLowerCase();
+		surroundingLetter5 = document.getElementById('surroundingLetter5').value.toLowerCase();
+		surroundingLetter6 = document.getElementById('surroundingLetter6').value.toLowerCase();
+		
+		searchArray = [centerLetter, surroundingLetter1, surroundingLetter2, surroundingLetter3, surroundingLetter4, surroundingLetter5, surroundingLetter6, centerLetter];
+		var searchArray = searchArray.sort(() => Math.random() - 0.5);
+		
+		var searchString = searchArray.toString();
+		searchString = searchString.split(",").join("");
+		
+		var fullUrl = api_url + searchString + api_key;
+		const response = await fetch(fullUrl);
+        
+		var jsonData = await response.json();
+		document.getElementById('listOfUnverifiedHits').textContent =  document.getElementById('listOfUnverifiedHits').textContent + jsonData;
+		
+	}
+	  
+	async function repeatGetWords(){
+		for (var k = 0; k<500; k++)
+			{
+				getWords();
+			}
+	}
+	  
+	async function filter(){
+		approvedArray = [];
+		var totalString = document.getElementById('listOfUnverifiedHits').textContent;
+		var totalArray = totalString.split(",");
+		var totalSet = new Set(totalArray);	  
+		totalArray = [...totalSet];
+	  
+		var checkedWord;
+		var letterApprovalFlag = true;
+		var centerApprovalFlag = true;
+		var surroundApprovalFlag = true;
+		var countOne = 0;
+		var countTwo = 0;
+		var countThree = 0;
+		var countFour = 0;
+		var countFive = 0;
+		var countSix = 0;
+		
+		while(totalArray.length>0){
+			checkedWord = totalArray.shift();
+			for (var j=0; j<=checkedWord.length-1; j++){
+				if(
+				checkedWord[j].toLowerCase() != surroundingLetter1 &&
+				checkedWord[j].toLowerCase() != surroundingLetter2 &&
+				checkedWord[j].toLowerCase() != surroundingLetter3 &&
+				checkedWord[j].toLowerCase() != surroundingLetter4 &&
+				checkedWord[j].toLowerCase() != surroundingLetter5 &&
+				checkedWord[j].toLowerCase() != surroundingLetter6 &&
+				checkedWord[j].toLowerCase() != centerLetter
+				)
+					{
+						letterApprovalFlag = false;
+						j=999;
+					}
+				else {letterApprovalFlag = true;}
+			}
+			
+			for (var j=0; j<=checkedWord.length-1; j++){
+				if(
+				checkedWord[j].toLowerCase() == centerLetter
+				)
+					{
+						centerApprovalFlag = true;
+						j=999;
+					}
+				else {centerApprovalFlag = false;}
+			}
+			
+			countOne = 0;
+			countTwo = 0;
+			countThree = 0;
+			countFour = 0;
+			countFive = 0;
+			countSix = 0;
+			
+			for (var j=0; j<=checkedWord.length-1; j++){
+				if(checkedWord[j].toLowerCase() == surroundingLetter1){countOne++;}
+				if(checkedWord[j].toLowerCase() == surroundingLetter2){countTwo++;}
+				if(checkedWord[j].toLowerCase() == surroundingLetter3){countThree++;}
+				if(checkedWord[j].toLowerCase() == surroundingLetter4){countFour++;}
+				if(checkedWord[j].toLowerCase() == surroundingLetter5){countFive++;}
+				if(checkedWord[j].toLowerCase() == surroundingLetter6){countSix++;}
+				if(countOne < 2 && countTwo < 2 && countThree < 2 && countFour < 2 && countFive < 2 && countSix < 2){
+					surroundApprovalFlag = true;
+			}
+			else{
+				surroundApprovalFlag = false;
+				j=999;
+				}
+			}
+			if (letterApprovalFlag && centerApprovalFlag && surroundApprovalFlag)
+				{
+					approvedArray.unshift(checkedWord);
+					approvedArray.sort();
+				}
+			}
+		var approvedArrayString = approvedArray.toString();
+		approvedArrayString = approvedArrayString.split(",").join(", ");
+		document.getElementById('listOfVerifiedHits').innerHTML = "<b>" + "Verified words:   " + "</b>" + approvedArrayString + "<br>" + "<br>" + "<hr>";
+	}
+	  	
+	async function getDefinitions() {
+		document.getElementById('listOfDefinitions').innerHTML = ""; 
+		for (var i = 0; i <= approvedArray.length - 1; i++){
+			var fullUrl = api_url + approvedArray[i] + api_key;
+			const response = await fetch(fullUrl);
+			var jsonData = await response.json();
+			document.getElementById('listOfDefinitions').innerHTML = document.getElementById('listOfDefinitions').innerHTML + "<br>"  + "<b>" + approvedArray[i] + ":   " + "</b>" + jsonData[0].shortdef + "<br>";
+		}
+	}
+    </script> 
+
+  </body>
+</html>

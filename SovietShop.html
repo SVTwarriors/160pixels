@@ -1,0 +1,115 @@
+<html>
+<head>
+<style>
+
+body {
+background-color: black;
+}
+div.titleClass {
+text-align: center;
+color: red;
+font-family: Impact;
+font-size: 2.5em;
+}
+
+div.svgDivClassMid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 90vh;
+align-items: center;
+justify-items: center;
+}
+
+div.arrowDivClass {
+display: grid;
+margin-right: auto;
+margin-left: auto;
+}
+
+div.svgDivClassInt {
+display: grid;
+margin-top: 0;
+margin-right: auto;
+margin-bottom: 0;
+margin-left: auto;
+}
+
+</style>
+</head>
+<body>
+
+<!--<button onclick=changeImageNumber(-1)>Left</button>-->
+<div class='titleClass'></div>
+<div class='svgDivClassExt'>
+<div class='svgDivClassMid'>
+<div class='arrowDivClass'><img src="SovietShopArrow.svg" onclick=changeImageNumber(-1)></div>
+<div class='svgDivClassInt'><canvas id="pbmCanvas" width="512" height="480" style="border:3px solid red;"></canvas></div>
+<p id="outputArray" hidden>something went wrong!</p>
+<p id="outputWidth" hidden>something went wrong!</p>
+<p id="outputHeight" hidden>something went wrong!</p>
+<p id="outputPixels" hidden>something went wrong!</p>
+<p id="outputPixelRows" hidden>something went wrong!</p>
+<div class='arrowDivClass'><img src="SovietShopArrow.svg" onclick=changeImageNumber(1) style="transform:rotate(180deg);"></div>
+<!--<button onclick=changeImageNumber(1)>Right</button>-->
+</div>
+</div>
+
+<script>
+var imageNumber = 1;
+changeImageNumber(0);
+async function changeImageNumber(upOrDown){
+	imageNumber = imageNumber+upOrDown;
+	imageNumberString = imageNumber.toString();
+	while(imageNumberString.length<4){
+		imageNumberString = "0" + imageNumberString;
+	}
+	getText("/SovietShopGallery/PBMZ" + imageNumberString + ".pbm");
+}
+
+async function getText(pathFile) {
+  let fetchedFile = await fetch(pathFile);
+  let rawData = await fetchedFile.text();
+  let rawDataArray = await rawIntoArrayOntoCanvas(rawData);
+}
+
+async function rawIntoArrayOntoCanvas(rawDataXXX){
+	var outputString = rawDataXXX;
+	for (var i=0; i<11; i++) {
+		outputString = outputString.replace(/\r\n|\n|\r|\s/, "xxxxxxxxx");
+	}
+	outputString = outputString.replaceAll(/(\r\n|\n|\r)/gm, "");
+	outputString = outputString.replaceAll(" ", "");
+	var outputArray = outputString.split("xxxxxxxxx");
+	document.getElementById("outputArray").innerHTML = "ok";
+	var pbmPixelWidth = outputArray[9];
+	document.getElementById("outputWidth").innerHTML = pbmPixelWidth;
+	var pbmPixelHeight = outputArray[10];
+	document.getElementById("outputHeight").innerHTML = pbmPixelHeight;
+	var pbmPixels = outputArray[11];
+	document.getElementById("outputPixels").innerHTML = "ok";
+	
+	var pixelRowArray=[];
+	for (var j=0; j<parseInt(pbmPixelHeight);j++){
+		pixelRowArray[j] = pbmPixels.substring(0, pbmPixelWidth);
+		pbmPixels = pbmPixels.slice(pbmPixelWidth);	
+	}
+	document.getElementById("outputPixelRows").innerHTML = "ok";
+	
+	var canvas = document.getElementById("pbmCanvas");
+	var context = canvas.getContext("2d");
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.fillStyle = "red";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	/*context.fillRect(0, 0, 100, 100);*/
+	context.fillStyle = "black";
+	for (var k=0; k<parseInt(pbmPixelHeight); k++){
+		for (var l=0; l<parseInt(pbmPixelWidth); l++){
+			if(pixelRowArray[k].charAt(l)==1){
+				context.fillRect(l, k, 1, 1);
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>
