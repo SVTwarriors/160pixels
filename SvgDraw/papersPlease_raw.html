@@ -1,0 +1,55 @@
+<html>
+<head>
+<style>
+body {
+background-color: black;
+}
+div.titleClass {
+text-align: center;
+color: red;
+font-family: Impact;
+font-size: 2.5em;
+}
+div.svgDivClassExt {
+}
+div.svgDivClassMid {
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: 90vh;
+align-items: center;
+justify-items: center;
+}
+div.svgDivClassInt {
+display: grid;
+margin-top: 0;
+margin-right: auto;
+margin-bottom: 0;
+margin-left: auto;
+}
+</style>
+</head>
+<body>
+<img id="hiddenImage" width="512px" height="480px" src="papersPlease_raw.svg" style="display: none;">
+<div class='titleClass'>
+
+</div>
+<div class='svgDivClassExt'>
+<div class='svgDivClassMid'>
+<div class='svgDivClassInt'>
+<canvas id='svgCanvas', width='512px' height='480px' style='border:3px solid red;'>
+Use another browser dude!
+</canvas>
+
+<script>
+window.onload = function() {
+  var canvasObject = document.getElementById('svgCanvas');
+  var canvasContext = canvasObject.getContext("2d");
+  var hiddenImageObject = document.getElementById("hiddenImage");
+  canvasContext.drawImage(hiddenImageObject, 0, 0);
+}
+</script>
+</div>
+</div>
+</div>
+</body>
+</html>
