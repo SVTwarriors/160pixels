@@ -1,0 +1,95 @@
+<html>
+<header><p><font size="6"><b><i><u>The Support Check Calculator</u></i></b></font></p></header>
+<body>
+<hr>
+<p><i>A simple tool to help count how many SPs a Support Check with the below variables will remove. Both the effect of a Specific Die Roll or the average effect can be calculated.</i></p>
+<hr>
+<table border=1>
+  <tr>
+    <th>Variables</th>
+    <th>Input and Output</th>
+  </tr>
+  <tr>
+    <td><p>Ops Value and SC Modifier(s): </p></td>
+    <td><input type = "text" id = "MODI_INPUT" value="0"></td>
+  </tr>
+  <tr>
+    <td><p>Ops Value of Card: </p></td>
+    <td><input type = "text" id = "OPS_INPUT" value="3"></td>
+  </tr>
+  <tr>
+    <td><p>SC Die Roll: </p></td>
+    <td><input type = "text" id = "ROLL_INPUT" value="6"></td>
+  </tr>
+  <tr>
+    <td><p>Neighbouring Friendly Controlled Spaces: </p></td>
+    <td><input type = "text" id = "FC_INPUT" value="0"></td>
+  </tr>
+  <tr>
+    <td><p>Neighbouring Enemy Controlled Spaces: </p></td>
+    <td><input type = "text" id = "EC_INPUT" value="0"></td>
+  </tr>
+  <tr>
+    <td><p>Stability of SCed space: </p></td>
+    <td><input type = "text" id = "STAB_INPUT" value="3"></td>
+  </tr>
+  <tr height="50">
+    <td><center><button type="button" onclick="SC()">SC Effect (Specific Die Roll)</button></center></td>
+    <td><center><p id="SCCALC_OUTPUT">Enter variables</p></center></td>
+  </tr>
+  <tr height="50">
+    <td><center><button type="button" onclick="SC_AVERAGE()">SC Effect (Average)</button></center></td>
+    <td><center><p id="SCCALC_AVERAGE_O">Enter variables</p></center></td>
+  </tr>
+</table>
+
+<script>
+function SC() {
+var MODI = parseInt(document.getElementById("MODI_INPUT").value);
+var OPS = parseInt(document.getElementById("OPS_INPUT").value);
+var ROLL = parseInt(document.getElementById("ROLL_INPUT").value);
+var FC = parseInt(document.getElementById("FC_INPUT").value);
+var EC = parseInt(document.getElementById("EC_INPUT").value);
+var STAB = parseInt(document.getElementById("STAB_INPUT").value);
+var SCCALC = MODI + OPS + ROLL + FC - EC - 2 * STAB;
+    document.getElementById("SCCALC_OUTPUT").style.fontSize='35px';
+    document.getElementById("SCCALC_OUTPUT").style.color = "#000000";
+if (SCCALC < 0) SCCALC = 0;
+if (isNaN(SCCALC)) SCCALC = "Invalid Input";
+if (isNaN(SCCALC)) document.getElementById("SCCALC_OUTPUT").style.fontSize='16px';
+if (isNaN(SCCALC)) document.getElementById("SCCALC_OUTPUT").style.color = "#ff0000";
+    document.getElementById("SCCALC_OUTPUT").innerHTML = SCCALC;
+}
+
+function SC_AVERAGE() {
+var MODI_A = parseInt(document.getElementById("MODI_INPUT").value);
+var OPS_A = parseInt(document.getElementById("OPS_INPUT").value);
+var FC_A = parseInt(document.getElementById("FC_INPUT").value);
+var EC_A = parseInt(document.getElementById("EC_INPUT").value);
+var STAB_A = parseInt(document.getElementById("STAB_INPUT").value);
+var SCCALC_R1 = MODI_A + OPS_A + 1 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R1 < 0) SCCALC_R1 = 0;
+var SCCALC_R2 = MODI_A + OPS_A + 2 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R2 < 0) SCCALC_R2 = 0;
+var SCCALC_R3 = MODI_A + OPS_A + 3 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R3 < 0) SCCALC_R3 = 0;
+var SCCALC_R4 = MODI_A + OPS_A + 4 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R4 < 0) SCCALC_R4 = 0;
+var SCCALC_R5 = MODI_A + OPS_A + 5 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R5 < 0) SCCALC_R5 = 0;
+var SCCALC_R6 = MODI_A + OPS_A + 6 + FC_A - EC_A - 2 * STAB_A;
+if (SCCALC_R6 < 0) SCCALC_R6 = 0;
+var SCCALC_AVERAGE = (SCCALC_R1 + SCCALC_R2 + SCCALC_R3 + SCCALC_R4 + SCCALC_R5 + SCCALC_R6)/6;
+SCCALC_AVERAGE = SCCALC_AVERAGE.toFixed(2);
+    document.getElementById("SCCALC_AVERAGE_O").style.fontSize='35px';
+    document.getElementById("SCCALC_AVERAGE_O").style.color = "#000000";
+if (isNaN(SCCALC_AVERAGE)) SCCALC_AVERAGE = "Invalid Input";
+if (isNaN(SCCALC_AVERAGE)) document.getElementById("SCCALC_AVERAGE_O").style.fontSize='16px';
+if (isNaN(SCCALC_AVERAGE)) document.getElementById("SCCALC_AVERAGE_O").style.color = "#ff0000";
+    document.getElementById("SCCALC_AVERAGE_O").innerHTML = SCCALC_AVERAGE;
+}
+</script>
+
+
+</body>
+</html>
